@@ -1,0 +1,33 @@
+{
+  "trucanh": {
+    "id": "trucanh",
+    "name": "Nguyễn Thị Trúc Anh",
+    "role": "Tổ trưởng Tổ 1 - Lớp 12A3",
+    "image": "https://i.ibb.co/9mXt726z/IMG-6003-anh-truc.jpg",
+    "birthDate": "21/08/2008",
+    "address": "163 Hùng Vương, Khóm 3, Phường Ngã Năm, TP. Cần Thơ",
+    "phone": "0914778416",
+    "email": "tanhkuku22@gmail.com",
+    "introduction": "Xin chào, mình là Nguyễn Thị Trúc Anh. Hiện mình đang là một mảnh ghép của Tổ 1, lớp 12A3 trường THPT Mai Thanh Thế. Mục tiêu của mình là thi đỗ ngành Logistics tại Đại học Cần Thơ.",
+    "goals": [
+      "Đạt điểm cao trong kỳ thi tốt nghiệp THPT",
+      "Trúng tuyển vào trường Đại học mơ ước"
+    ]
+  },
+  "ngocnhi": {
+    "id": "ngocnhi",
+    "name": "Nguyễn Ngọc Nhị",
+    "role": "Thành viên Tổ 1 - Lớp 12A3",
+    "image": "https://i.ibb.co/WWnTn5dr/ngocnhi.jpg", 
+    "birthDate": "15/05/2008",
+    "address": "Đường Xẻo Cạy, Khóm 6, Phường Ngã Năm",
+    "phone": "0987382202",
+    "email": "nguyenngocthile@gmail.com",
+    "introduction": "Mình là Nguyễn Ngọc Nhị, một thành viên của Tổ 1 lớp 12A3 trường THPT Mai Thanh Thế. Mình đặt mục tiêu thi đỗ ngành Quản trị Kinh doanh tại Đại học Cần Thơ.",
+    "goals": [
+      "Đạt điểm cao trong kỳ thi tốt nghiệp THPT",
+      "Trúng tuyển vào trường Đại học mơ ước"
+    ]
+  }
+}
+	
