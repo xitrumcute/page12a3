@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kỷ Niệm Lớp 12A3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #ffffff;
+            --accent-color: #2ecc71;
+            --text-color: #333;
+            --bg-color: #f8f9fc;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: url('https://imgpx.com/en/UGc1pnO5dM0C.jpeg') center/cover fixed;
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        .header {
+            background: url('https://imgpx.com/en/5qQhk13KhMYT.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 6rem 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Container and Grid */
+        .container {
+            max-width: 1400px;
+            margin: -50px auto 2rem;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        /* Memory Card Styles */
+        .memory-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.6s forwards;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--hover-shadow);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .memory-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .memory-card:hover .memory-image {
+            transform: scale(1.05);
+        }
+
+        .memory-info {
+            padding: 2rem;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 1));
+        }
+
+        .memory-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .memory-date {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .memory-date i {
+            color: var(--accent-color);
+        }
+
+        .memory-description {
+            line-height: 1.8;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+        }
+
+        /* Animation Delays for Cards */
+        .memory-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .memory-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .memory-card:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .memory-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 4rem 0;
+            }
+
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .memory-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+
+            .memory-info {
+                padding: 1.5rem;
+            }
+
+            .back-button {
+                top: 20px;
+                left: 20px;
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .memory-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .memory-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Trở về trang chủ
+    </a>
+
+    <header class="header">
+        <h1>Kỷ Niệm Lớp 12A3</h1>
+        <p>Những khoảnh khắc đáng nhớ</p>
+    </header>
+
+    <div class="container">
+        <div class="memory-grid">
+
+            <div class="memory-card">
+                <img src="https://i.ibb.co/39JY2BpR/ce4b5ad972e7ffb9a6f618.jpg" alt="Kỷ niệm lớp học"
+                    class="memory-image">
+                <div class="memory-info">
+                    <h3>Những Ngày Đầu Tiên Của Lớp</h3>
+                    <div class="memory-date">
+                        <i class="far fa-calendar-alt"></i> 13/10/2023
+                    </div>
+                    <p class="memory-description">
+                        Khoảnh khắc mở đầu hành trình của tập thể <strong>10A2</strong> – những gương mặt mới, nụ cười
+                        rụt rè và cả sự háo hức của tuổi học trò.
+                        Một khởi đầu giản dị nhưng đầy ý nghĩa, nơi tình bạn và ký ức đầu tiên bắt đầu đâm chồi dưới mái
+                        trường <strong>THPT Mai Thanh Thế</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <img src="https://i.ibb.co/HD86PDHj/08ea7c964ba8c6f69fb914.jpg" alt="Kỷ niệm 20/11"
+                    class="memory-image">
+                <div class="memory-info">
+                    <h3>Ngày Nhà Giáo Việt Nam 20/11</h3>
+                    <div class="memory-date">
+                        <i class="far fa-calendar-alt"></i> 20/11/2023
+                    </div>
+                    <p class="memory-description">
+                        Một ngày thật ý nghĩa khi lớp <strong>10A2</strong> cùng nhau tri ân thầy cô – những người đã
+                        chắp cánh cho ước mơ của chúng em.
+                        Những bó hoa, lời chúc và tiếng cười hồn nhiên đã tạo nên bức tranh ấm áp của tình thầy trò.
+                    </p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <img src="https://i.ibb.co/gZQ3sCmM/ddbeccf1fbcf76912fde8.jpg" alt="Kỷ niệm 20/11/2024"
+                    class="memory-image">
+                <div class="memory-info">
+                    <h3>20/11/2024 – Tri Ân Thầy Cô</h3>
+                    <div class="memory-date">
+                        <i class="far fa-calendar-alt"></i> 20/11/2024
+                    </div>
+                    <p class="memory-description">
+                        Ngày lễ tri ân trong năm học lớp <strong>11A2</strong> tràn ngập tiếng cười và cảm xúc.
+                        Mỗi lời chúc, mỗi tấm thiệp đều chứa đựng sự biết ơn chân thành gửi đến những người lái đò tận
+                        tụy.
+                    </p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <img src="https://i.ibb.co/35RYPc5t/572709523e6cb332ea7d12.jpg" alt="Sinh nhật cô Oanh"
+                    class="memory-image">
+                <div class="memory-info">
+                    <h3>Sinh Nhật Cô Nguyễn Thị Oanh</h3>
+                    <div class="memory-date">
+                        <i class="far fa-calendar-alt"></i> 18/10/2024
+                    </div>
+                    <p class="memory-description">
+                        Một buổi sinh nhật ấm áp dành tặng cô chủ nhiệm <strong>Nguyễn Thị Oanh</strong> – người luôn
+                        tận tâm và hết lòng vì học sinh.
+                        Tiếng cười vang khắp lớp, tình cảm cô trò càng thêm gắn bó qua từng khoảnh khắc.
+                    </p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <img src="https://i.ibb.co/whPJVtkz/1a60469171affcf1a5be2.jpg" alt="Hội chợ trường"
+                    class="memory-image">
+                <div class="memory-info">
+                    <h3>Hội Chợ Mùa Đông</h3>
+                    <div class="memory-date">
+                        <i class="far fa-calendar-alt"></i> 24/11/2025
+                    </div>
+                    <p class="memory-description">
+                        Hội chợ năm học là dịp để lớp <strong>11A2</strong> cùng nhau trải nghiệm, sáng tạo và gắn kết.
+                        Gian hàng rực rỡ, tiếng cười rộn ràng – tất cả đã làm nên một kỷ niệm khó quên trong tuổi học
+                        trò.
+                    </p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <img src="https://i.ibb.co/GQnsG58G/73038576b2483f16665911.jpg" alt="Nhà giáo Việt Nam"
+                    class="memory-image">
+                <div class="memory-info">
+                    <h3>Tri Ân Ngày Nhà Giáo Việt Nam</h3>
+                    <div class="memory-date">
+                        <i class="far fa-calendar-alt"></i> 20/10/2024
+                    </div>
+                    <p class="memory-description">
+                        Lớp <strong>11A2</strong> cùng cô <strong>Ngô Hải Yến</strong> đón ngày lễ với tràn ngập tiếng
+                        cười và niềm vui.
+                        Những lời chúc mộc mạc nhưng chân thành đã nói thay tấm lòng của mỗi học sinh dành cho thầy cô.
+                    </p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <img src="https://i.ibb.co/zWt9HKdv/968fe678d1465c1805574.jpg" alt="Thành tích chuyển đổi số"
+                    class="memory-image">
+                <div class="memory-info">
+                    <h3>Thành Tích Của Lớp</h3>
+                    <div class="memory-date">
+                        <i class="far fa-calendar-alt"></i> 10/10/2024
+                    </div>
+                    <p class="memory-description">
+                        Lớp <strong>11A2</strong> đạt thành tích xuất sắc trong hoạt động hưởng ứng <em>“Ngày Chuyển Đổi
+                            Số Quốc Gia”</em> năm học 2024–2025.
+                        Đây là niềm tự hào và là minh chứng cho tinh thần năng động, sáng tạo của cả tập thể.
+                    </p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <img src="https://i.ibb.co/R43g0ffW/cea66054576ada34837b3.jpg" alt="Thiết kế thiệp"
+                    class="memory-image">
+                <div class="memory-info">
+                    <h3>Giải Nhì Cuộc Thi “Thiết Kế Và Trang Trí Thiệp”</h3>
+                    <div class="memory-date">
+                        <i class="far fa-calendar-alt"></i> 10/10/2024
+                    </div>
+                    <p class="memory-description">
+                        Một dấu ấn đáng nhớ khi lớp <strong>11A2</strong> xuất sắc giành <strong>Giải Nhì</strong> cuộc
+                        thi <em>“Thiết kế và Trang trí Thiệp”</em> năm học 2024–2025.
+                        Thành công này là kết quả của sự đoàn kết, sáng tạo và nỗ lực không ngừng của từng thành viên.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+    </div>
+</body>
+
+</html>

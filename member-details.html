@@ -189,8 +189,13 @@
 
                 // Tải dữ liệu từ file JSON
                 const response = await fetch('./data/members.json');
+                if (!response.ok) {
+                    throw new Error('Không thể tải dữ liệu thành viên');
+                }
+                
                 const data = await response.json();
-                const member = data[memberId];
+                console.log('Loaded data:', data); // Debug log
+                const member = data.find(m => m.id === memberId);
 
                 if (!member) {
                     throw new Error('Không tìm thấy thông tin thành viên');
@@ -247,10 +252,12 @@
                 document.getElementById('content').innerHTML = content;
 
             } catch (error) {
+                console.error('Error:', error); // Debug log
                 document.getElementById('content').innerHTML = `
                     <div class="error">
                         <h2>Lỗi</h2>
                         <p>${error.message}</p>
+                        <p>Chi tiết: ${error.toString()}</p>
                     </div>
                 `;
             }
