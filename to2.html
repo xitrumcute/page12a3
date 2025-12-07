@@ -5,246 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tổ 2 - Lớp 12A3</title>
     <link rel="icon" type="image/png" href="https://i.ibb.co/21pSRG8f/logo12a3.png">
-    <!-- Font Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #4e73df;
-            --secondary-color: #ffffff;
-            --text-color: #333;
-            --bg-color: #f8f9fc;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        body {
-            background: url('https://imgpx.com/en/UGc1pnO5dM0C.jpeg') center/cover fixed;
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        .header {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                        url('https://imgpx.com/en/5qQhk13KhMYT.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 3rem 0;
-            text-align: center;
-            color: white;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 20px;
-        }
-
-        .back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--primary-color);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            z-index: 1000;
-            transition: transform 0.3s;
-        }
-
-        .back-button:hover {
-            transform: translateY(-2px);
-        }
-
-        .team-members {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 1rem 0;
-        }
-
-        .member-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            backdrop-filter: blur(10px);
-        }
-
-        .member-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .member-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-            background-color: #f5f5f5;
-        }
-
-        .member-info {
-            padding: 1.5rem;
-        }
-
-        .member-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .member-role {
-            color: #666;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            font-style: italic;
-        }
-
-        .member-achievements {
-            list-style: none;
-        }
-
-        .member-achievements li {
-            margin-bottom: 0.5rem;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .member-achievements li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-        }
-
-        .view-more-btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .view-more-btn:hover {
-            background-color: #3756b5;
-            transform: translateY(-2px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-
-        .adjust-margin {
-            margin-top: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            .team-members {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1.5rem;
-            }
-            .member-image {
-                height: 250px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./css/team-base.css">
 </head>
+
 <body>
-    <a href="index.html" class="back-button">
-        <i class="fas fa-arrow-left"></i> Trở về trang chủ
-    </a>
+    <nav>
+        <div class="nav-logo">
+            <i class="fas fa-users"></i> Tổ 2 - Lớp 12A3
+        </div>
+        <a href="index.html" class="nav-back">
+            <i class="fas fa-arrow-left"></i> Trở về trang chủ
+        </a>
+    </nav>
 
-    <header class="header">
-        <h1>Tổ 2 - Lớp 12A3</h1>
+    <div class="team-header">
+        <h1>👥 Tổ 2</h1>
         <p>Năm học 2025 - 2026</p>
-    </header>
+    </div>
 
-    <div class="container">
-        <div class="team-members">
-            <div class="member-card">
-                <img src="https://i.ibb.co/TMYp0m8w/ngocthao.jpg" alt="Nguyễn Lương Ngọc Thảo" class="member-image adjust-margin">
-                <div class="member-info">
-                    <h3>Nguyễn Lương Ngọc Thảo</h3>
-                    <p class="member-role">Thành viên</p>
-                    <a href="./member-details.html?id=ngocthao" class="view-more-btn">Xem thông tin chi tiết</a>
-                </div>
+    <div class="team-members">
+        <div class="member-card-item">
+            <div class="member-image-wrapper">
+                <img src="https://i.ibb.co/TMYp0m8w/ngocthao.jpg" alt="Nguyễn Lương Ngọc Thảo">
             </div>
-
-            <div class="member-card">
-                <img src="https://i.ibb.co/pv1v2fzv/anhthu2.jpg" alt="Trương Anh Thư" class="member-image adjust-margin">
-                <div class="member-info">
-                    <h3>Trương Anh Thư</h3>
-                    <p class="member-role">Thành viên</p>
-                    <a href="./member-details.html?id=anhthu" class="view-more-btn">Xem thông tin chi tiết</a>
-                </div>
+            <div class="member-info-wrapper">
+                <h3>Nguyễn Lương Ngọc Thảo</h3>
+                <p class="member-role">Tổ 2</p>
+                <details class="member-details-section">
+                    <summary>Xem thông tin →</summary>
+                    <div class="member-details-info">
+                        <p><strong>Ngày sinh:</strong> 12/09/2008</p>
+                        <p><strong>Địa chỉ:</strong> 207, Khóm Vĩnh Mỹ, Phường Mỹ Quới, Thành Phố Cần Thơ</p>
+                        <p><strong>SĐT:</strong> <a href="tel:0939127348">0939127348</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:tn342334@gmail.com">tn342334@gmail.com</a></p>
+                    </div>
+                </details>
             </div>
+        </div>
 
-            <div class="member-card">
-                <img src="https://i.ibb.co/35JYxFb9/nhayen.jpg" alt="Trần Nhã Yến" class="member-image adjust-margin">
-                <div class="member-info">
-                    <h3>Trần Nhã Yến</h3>
-                    <p class="member-role">Thành viên</p>
-                    <a href="./member-details.html?id=nhayen" class="view-more-btn">Xem thông tin chi tiết</a>
-                </div>
+        <div class="member-card-item">
+            <div class="member-image-wrapper">
+                <img src="https://i.ibb.co/pv1v2fzv/anhthu2.jpg" alt="Trương Anh Thư">
             </div>
-
-            <div class="member-card">
-                <img src="https://i.ibb.co/9mJMSYXq/trungta.jpg" alt="Trần Trung Tá" class="member-image">
-                <div class="member-info">
-                    <h3>Trần Trung Tá</h3>
-                    <p class="member-role">Thành viên</p>
-                    <a href="./member-details.html?id=trungta" class="view-more-btn">Xem thông tin chi tiết</a>
-                </div>
+            <div class="member-info-wrapper">
+                <h3>Trương Anh Thư</h3>
+                <p class="member-role">Tổ 2</p>
+                <details class="member-details-section">
+                    <summary>Xem thông tin →</summary>
+                    <div class="member-details-info">
+                        <p><strong>Ngày sinh:</strong> 14/08/2008</p>
+                        <p><strong>Địa chỉ:</strong> Phường Ngã Năm, Thành Phố Cần Thơ</p>
+                        <p><strong>SĐT:</strong> <a href="tel:0945072585">0945072585</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:Tthu47931@gmail.com">Tthu47931@gmail.com</a></p>
+                    </div>
+                </details>
             </div>
+        </div>
 
-            <div class="member-card">
-                <img src="https://i.ibb.co/xSntcBms/quockhanh.png" alt="Nguyễn Quốc Khánh" class="member-image">
-                <div class="member-info">
-                    <h3>Nguyễn Quốc Khánh</h3>
-                    <p class="member-role">Thành viên</p>
-                    <a href="./member-details.html?id=quockhanh" class="view-more-btn">Xem thông tin chi tiết</a>
-                </div>
+        <div class="member-card-item">
+            <div class="member-image-wrapper">
+                <img src="https://i.ibb.co/35JYxFb9/nhayen.jpg" alt="Trần Nhã Yến">
+            </div>
+            <div class="member-info-wrapper">
+                <h3>Trần Nhã Yến</h3>
+                <p class="member-role">Tổ 2</p>
+                <details class="member-details-section">
+                    <summary>Xem thông tin →</summary>
+                    <div class="member-details-info">
+                        <p><strong>Ngày sinh:</strong> 19/12/2008</p>
+                        <p><strong>Địa chỉ:</strong> Khóm 2, Phường Ngã Năm, Thành Phố Cần Thơ</p>
+                        <p><strong>SĐT:</strong> <a href="tel:0868764723">0868764723</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:trannhayen2008@gmail.com">trannhayen2008@gmail.com</a></p>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="member-card-item">
+            <div class="member-image-wrapper">
+                <img src="https://i.ibb.co/9mJMSYXq/trungta.jpg" alt="Trần Trung Tá">
+            </div>
+            <div class="member-info-wrapper">
+                <h3>Trần Trung Tá</h3>
+                <p class="member-role">Tổ 2</p>
+                <details class="member-details-section">
+                    <summary>Xem thông tin →</summary>
+                    <div class="member-details-info">
+                        <p><strong>Ngày sinh:</strong> 08/02/2008</p>
+                        <p><strong>Địa chỉ:</strong> Khóm Vĩnh Bình, Phường Mỹ Quới, Thành Phố Cần Thơ</p>
+                        <p><strong>SĐT:</strong> <a href="tel:0764909435">0764909435</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:trungta08022008@gmail.com">trungta08022008@gmail.com</a></p>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="member-card-item">
+            <div class="member-image-wrapper">
+                <img src="https://i.ibb.co/xSntcBms/quockhanh.png" alt="Nguyễn Quốc Khánh">
+            </div>
+            <div class="member-info-wrapper">
+                <h3>Nguyễn Quốc Khánh</h3>
+                <p class="member-role">Tổ 2</p>
+                <details class="member-details-section">
+                    <summary>Xem thông tin →</summary>
+                    <div class="member-details-info">
+                        <p><strong>Ngày sinh:</strong> 08/02/2008</p>
+                        <p><strong>Địa chỉ:</strong> Ấp Tân Bình, Xã Tân Long, Thành Phố Cần Thơ</p>
+                        <p><strong>SĐT:</strong> <a href="tel:0913482062">0913482062</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:quockhanhngaba@gmail.com">quockhanhngaba@gmail.com</a></p>
+                    </div>
+                </details>
             </div>
         </div>
     </div>
-
-    <script>
-        // Animation khi scroll
-        function reveal() {
-            var cards = document.querySelectorAll(".member-card");
-            cards.forEach(card => {
-                var windowHeight = window.innerHeight;
-                var elementTop = card.getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    card.style.opacity = "1";
-                    card.style.transform = "translateY(0)";
-                }
-            });
-        }
-
-        window.addEventListener("scroll", reveal);
-        // Kích hoạt để hiển thị các phần tử trong tầm nhìn ban đầu
-        reveal();
-    </script>
 </body>
-</html>

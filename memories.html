@@ -1,254 +1,217 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kỷ Niệm Lớp 12A3</title>
-    <link rel="icon" type="image/png" href="https://i.ibb.co/21pSRG8f/logo12a3.png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <style>
-        :root {
-            --primary-color: #4e73df;
-            --secondary-color: #ffffff;
-            --accent-color: #2ecc71;
-            --text-color: #333;
-            --bg-color: #f8f9fc;
-            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            --hover-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kỷ Niệm - Lớp 12A3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" type="image/png" href="https://i.ibb.co/21pSRG8f/logo12a3.png">
+  <style>
+    /* Memories Page Specific Styles */
+    .memories-header {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+      background: linear-gradient(135deg, var(--cream) 0%, var(--peach) 50%, var(--lavender) 100%);
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-        }
+    .memories-header h1 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--coral);
+      margin-bottom: 20px;
+      text-shadow: 3px 3px 0 var(--peach);
+    }
 
-        body {
-            background: url('https://imgpx.com/en/UGc1pnO5dM0C.jpeg') center/cover fixed;
-            color: var(--text-color);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
+    .memories-header p {
+      font-size: 1.3rem;
+      color: var(--text-light);
+      margin-bottom: 30px;
+    }
 
-        /* Header Styles */
-        .header {
-            background: url('https://imgpx.com/en/5qQhk13KhMYT.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 6rem 0;
-            text-align: center;
-            color: white;
-            margin-bottom: 2rem;
-            position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        }
+    .memories-container {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
-        }
+    .memories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
+    }
 
-        .header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 1;
-        }
+    .memory-card {
+      background: linear-gradient(145deg, #ffffff, #f0e6d8);
+      border-radius: 30px;
+      box-shadow: 
+        12px 12px 24px rgba(139, 115, 85, 0.15),
+        -8px -8px 20px rgba(255, 255, 255, 0.9),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+        inset -2px -2px 4px rgba(139, 115, 85, 0.1);
+      border: 3px solid rgba(255, 255, 255, 0.6);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
 
-        .header p {
-            font-size: 1.2rem;
-            position: relative;
-            z-index: 1;
-        }
+    .memory-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 
+        16px 16px 32px rgba(139, 115, 85, 0.2),
+        -10px -10px 24px rgba(255, 255, 255, 1),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+        inset -2px -2px 4px rgba(139, 115, 85, 0.1);
+    }
 
-        /* Container and Grid */
-        .container {
-            max-width: 1400px;
-            margin: -50px auto 2rem;
-            padding: 0 20px;
-            position: relative;
-        }
+    .memory-image-wrapper {
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+      position: relative;
+    }
 
-        .memory-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            padding: 20px 0;
-        }
+    .memory-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
 
-        /* Memory Card Styles */
-        .memory-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeIn 0.6s forwards;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
+    .memory-card:hover .memory-image-wrapper img {
+      transform: scale(1.08);
+    }
 
-        .memory-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--hover-shadow);
-        }
+    .memory-content {
+      padding: 25px 30px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .memory-content h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.3rem;
+      color: var(--coral);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
 
-        .memory-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
+    .memory-date {
+      font-size: 0.95rem;
+      color: var(--warm-brown);
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
 
-        .memory-card:hover .memory-image {
-            transform: scale(1.05);
-        }
+    .memory-description {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      flex-grow: 1;
+    }
 
-        .memory-info {
-            padding: 2rem;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 1));
-        }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--coral);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 25px;
+      background: linear-gradient(145deg, rgba(255, 107, 107, 0.1), transparent);
+      transition: all 0.3s ease;
+      width: fit-content;
+      margin: 40px auto 0;
+    }
 
-        .memory-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.8rem;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
+    .back-link:hover {
+      background: linear-gradient(145deg, var(--coral), #ff5252);
+      color: white;
+      transform: translateX(-4px);
+    }
 
-        .memory-date {
-            color: #666;
-            font-size: 1rem;
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+    @media (max-width: 768px) {
+      .memories-header h1 {
+        font-size: 2.5rem;
+      }
 
-        .memory-date i {
-            color: var(--accent-color);
-        }
+      .memories-header p {
+        font-size: 1.1rem;
+      }
 
-        .memory-description {
-            line-height: 1.8;
-            color: #555;
-            font-size: 1.1rem;
-        }
+      .memories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
 
-        /* Back Button */
-        .back-button {
-            position: fixed;
-            top: 30px;
-            left: 30px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            color: white;
-            padding: 12px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+      .memory-image-wrapper {
+        height: 240px;
+      }
 
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-        }
+      .memory-content {
+        padding: 20px 25px;
+      }
+    }
 
-        /* Animation Delays for Cards */
-        .memory-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
+    @media (max-width: 480px) {
+      .memories-header {
+        padding: 80px 20px 60px;
+      }
 
-        .memory-card:nth-child(3) {
-            animation-delay: 0.4s;
-        }
+      .memories-header h1 {
+        font-size: 2rem;
+      }
 
-        .memory-card:nth-child(4) {
-            animation-delay: 0.6s;
-        }
+      .memories-header p {
+        font-size: 1rem;
+      }
 
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .memory-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                gap: 25px;
-            }
-        }
+      .memories-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
 
-        @media (max-width: 768px) {
-            .header {
-                padding: 4rem 0;
-            }
-
-            .header h1 {
-                font-size: 2.2rem;
-            }
-
-            .memory-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 20px;
-            }
-
-            .memory-info {
-                padding: 1.5rem;
-            }
-
-            .back-button {
-                top: 20px;
-                left: 20px;
-                padding: 10px 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.8rem;
-            }
-
-            .memory-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .memory-image {
-                height: 250px;
-            }
-        }
-    </style>
+      .memory-image-wrapper {
+        height: 200px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <a href="index.html" class="back-button">
-        <i class="fas fa-arrow-left"></i> Trở về trang chủ
-    </a>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">
+      <div class="logo-icon">🎓</div>
+      Khóa 2025 - 2026
+    </div>
+    <ul class="nav-links">
+      <li><a href="./index.html#albums">← Quay lại</a></li>
+    </ul>
+  </nav>
 
-    <header class="header">
-        <h1>Kỷ Niệm Lớp 12A3</h1>
-        <p>Những khoảnh khắc đáng nhớ</p>
-    </header>
+  <!-- Header Section -->
+  <section class="memories-header">
+    <h1>Kỷ Niệm Lớp 12A3</h1>
+    <p>Những khoảnh khắc đáng nhớ của chúng ta</p>
+  </section>
+
+  <!-- Memories Grid -->
+  <div class="memories-container">
 
     <div class="container">
         <div class="memory-grid">

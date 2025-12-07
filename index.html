@@ -1,1144 +1,184 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lớp 12A3</title>
-    <link rel="icon" type="image/png" href="https://i.ibb.co/21pSRG8f/logo12a3.png">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <style>
-        @keyframes marquee {
-            0% {
-                transform: translateX(100%);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        .marquee-container {
-            position: absolute;
-            top: 1px;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.685);
-            padding: 10px 0;
-            z-index: 2;
-        }
-
-        .marquee-text {
-            display: inline-block;
-            white-space: nowrap;
-            animation: marquee 10s linear infinite;
-            color: rgb(0, 0, 0);
-            font-size: 1.2rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        @keyframes slideInFromLeft {
-        0% {
-          transform: translateX(-100%);
-          opacity: 0;
-        }
-        100% {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-
-      @keyframes slideInFromRight {
-        0% {
-          transform: translateX(100%);
-          opacity: 0;
-        }
-        100% {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-
-      @keyframes fadeInUp {
-        0% {
-          transform: translateY(40px);
-          opacity: 0;
-        }
-        100% {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-
-      :root {
-        --primary-color: #4e73df;
-        --secondary-color: #ffffff;
-        --text-color: #333;
-        --bg-color: #f8f9fc;
-        --animation-duration: 1s;
-        --animation-delay: 0.2s;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Roboto", sans-serif;
-      }
-
-      body {
-        /* background: 
-                linear-gradient(135deg, rgba(78, 115, 223, 0.05) 0%, rgba(46, 204, 113, 0.05) 100%),
-                repeating-linear-gradient(45deg, rgba(255,255,255, 0.1) 0px, rgba(255,255,255, 0.1) 2px, transparent 2px, transparent 4px),
-                linear-gradient(to bottom, #ffffff, #f8f9fc); */
-        background: url("https://imgpx.com/en/UGc1pnO5dM0C.jpeg") center/cover
-          fixed;
-        color: var(--text-color);
-        line-height: 1.6;
-        position: relative;
-        min-height: 100vh;
-      }
-
-      /* Floating Shapes Background */
-      body::before,
-      body::after {
-        content: "";
-        position: fixed;
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
-        z-index: -1;
-        animation: float 15s infinite ease-in-out;
-      }
-
-      body::before {
-        background: radial-gradient(
-          circle,
-          rgba(78, 115, 223, 0.1) 0%,
-          rgba(78, 115, 223, 0) 70%
-        );
-        top: -100px;
-        right: -100px;
-      }
-
-      body::after {
-        background: radial-gradient(
-          circle,
-          rgba(46, 204, 113, 0.1) 0%,
-          rgba(46, 204, 113, 0) 70%
-        );
-        bottom: -100px;
-        left: -100px;
-        animation-delay: -7.5s;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translate(0, 0) rotate(0deg);
-        }
-        25% {
-          transform: translate(50px, 50px) rotate(90deg);
-        }
-        50% {
-          transform: translate(0, 100px) rotate(180deg);
-        }
-        75% {
-          transform: translate(-50px, 50px) rotate(270deg);
-        }
-      }
-
-      .header {
-        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-          url("https://imgpx.com/en/5qQhk13KhMYT.jpg");
-        background-size: cover;
-        background-position: center;
-        padding: 4rem 0 6rem;
-        text-align: center;
-        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .header::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 1;
-      }
-
-      .header::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        /* background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E"); */
-        z-index: 1;
-        opacity: 0.5;
-      }
-
-      .profile-image {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        border: 5px solid white;
-        margin: 0 auto 2rem;
-        display: block;
-        object-fit: cover;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      .name {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        color: white;
-      }
-
-      .title {
-        font-size: 1.2rem;
-        opacity: 0.9;
-        color: white;
-      }
-
-      .container {
-        max-width: 1000px;
-        margin: -50px auto 0;
-        padding: 0 20px;
-      }
-
-      .card {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 15px;
-        padding: 2rem;
-        margin-bottom: 2rem;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1),
-          inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-        opacity: 0;
-        transform: translateY(40px);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        transition: 0.5s;
-      }
-
-      .card:hover::before {
-        left: 100%;
-      }
-
-      .card.animate {
-        animation: fadeInUp var(--animation-duration) ease forwards;
-      }
-
-      .card:nth-child(odd).animate {
-        animation: slideInFromLeft var(--animation-duration) ease forwards;
-      }
-
-      .card:nth-child(even).animate {
-        animation: slideInFromRight var(--animation-duration) ease forwards;
-      }
-
-      .section-title {
-        color: var(--primary-color);
-        margin-bottom: 1.5rem;
-        font-size: 1.5rem;
-        border-bottom: 2px solid var(--primary-color);
-        padding-bottom: 0.5rem;
-      }
-
-      .section-content {
-        margin-bottom: 1.5rem;
-        line-height: 1.8;
-      }
-
-      .education-timeline {
-        position: relative;
-        padding-left: 20px;
-      }
-
-      .timeline-item {
-        position: relative;
-        padding-left: 30px;
-        margin-bottom: 1.5rem;
-        border-left: 2px solid var(--primary-color);
-      }
-
-      .timeline-item h3 {
-        color: var(--primary-color);
-        margin-bottom: 0.5rem;
-      }
-
-      .timeline-item p {
-        margin: 0.3rem 0;
-      }
-
-      .hobby-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-      }
-
-      .hobby-item {
-        text-align: center;
-        padding: 1.5rem;
-        background: #f8f9fc;
-        border-radius: 10px;
-        transition: transform 0.3s;
-      }
-
-      .hobby-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .hobby-item i {
-        font-size: 2.5rem;
-        color: var(--primary-color);
-        margin-bottom: 1rem;
-      }
-
-      /* Animation delays for staggered effect */
-      .hobby-item:nth-child(2) {
-        transition-delay: 200ms;
-      }
-      .hobby-item:nth-child(3) {
-        transition-delay: 400ms;
-      }
-      .hobby-item:nth-child(4) {
-        transition-delay: 600ms;
-      }
-
-      /* Contact items staggered animation */
-      .contact-item:nth-child(2) {
-        transition-delay: 200ms;
-      }
-      .contact-item:nth-child(3) {
-        transition-delay: 400ms;
-      }
-      .contact-item:nth-child(4) {
-        transition-delay: 600ms;
-      }
-
-      .hobby-item h3 {
-        margin-bottom: 0.5rem;
-        color: var(--text-color);
-      }
-
-      .hobby-item {
-        text-decoration: none;
-        display: block;
-        color: inherit;
-      }
-
-      .hobby-item p {
-        color: var(--primary-color);
-        margin-top: 0.5rem;
-        font-size: 0.9rem;
-      }
-
-      /* Team Members Styling */
-      .team-members {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        padding: 1rem 0;
-      }
-
-      .member-card {
-        background: #fff;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-      }
-
-      .member-card:hover {
-        transform: translateY(-5px);
-      }
-
-      .member-image {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-      }
-
-      .member-info {
-        padding: 1.5rem;
-      }
-
-      .member-info h3 {
-        color: var(--text-color);
-        margin-bottom: 0.5rem;
-        font-size: 1.2rem;
-      }
-
-      .member-role {
-        color: var(--primary-color);
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-      }
-
-      .member-achievements {
-        list-style: none;
-        padding: 0;
-      }
-
-      .member-achievements li {
-        margin-bottom: 0.5rem;
-        padding-left: 20px;
-        position: relative;
-        font-size: 0.9rem;
-      }
-
-      .member-achievements li::before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: var(--primary-color);
-      }
-
-      @media (max-width: 768px) {
-        .hobby-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 15px;
-          padding: 10px;
-        }
-
-        .hobby-item {
-          padding: 20px 15px;
-        }
-
-        .hobby-item i {
-          font-size: 2rem;
-          margin-bottom: 10px;
-        }
-
-        .hobby-item h3 {
-          font-size: 1.1rem;
-          margin-bottom: 8px;
-        }
-
-        .hobby-item p {
-          font-size: 0.9rem;
-        }
-
-        .contact-row {
-          grid-template-columns: 1fr;
-          gap: 15px;
-        }
-
-        .contact-item {
-          padding: 15px;
-        }
-
-        .contact-icon {
-          width: 45px;
-          height: 45px;
-          font-size: 1.1rem;
-        }
-
-        .contact-info h3 {
-          font-size: 1.1rem;
-          margin-bottom: 5px;
-        }
-
-        .contact-info a, 
-        .contact-info p {
-          font-size: 0.95rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .hobby-grid {
-          grid-template-columns: 1fr;
-          gap: 12px;
-        }
-
-        .hobby-item {
-          display: flex;
-          align-items: center;
-          text-align: left;
-          padding: 15px;
-        }
-
-        .hobby-item i {
-          font-size: 1.8rem;
-          margin: 0 15px 0 0;
-        }
-
-        .hobby-item-content {
-          flex: 1;
-        }
-
-        .hobby-item h3 {
-          margin-bottom: 4px;
-        }
-
-        .contact-item {
-          padding: 12px;
-        }
-
-        .contact-icon {
-          width: 40px;
-          height: 40px;
-          font-size: 1rem;
-        }
-
-        .contact-info h3 {
-          font-size: 1rem;
-        }
-
-        .contact-info a, 
-        .contact-info p {
-          font-size: 0.9rem;
-        }
-      }
-
-      .achievement-list {
-        list-style: none;
-        padding: 0;
-      }
-
-      .achievement-list li {
-        margin-bottom: 1rem;
-        padding-left: 25px;
-        position: relative;
-      }
-
-        .achievement-list li::before {
-            content: "🏆";
-            position: absolute;
-            left: 0;
-        }
-        
-        .memory-button {
-            display: inline-block;
-            background: var(--primary-color);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-        }
-
-        .memory-button:hover {
-            transform: translateY(-3px);
-            background: #3756b5;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .memory-button i {
-            margin-right: 8px;
-        }      .contact-wrapper {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 0.5rem;
-      }
-
-      .contact-row {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-        margin-bottom: 2rem;
-      }
-
-      .contact-row:last-child {
-        margin-bottom: 0;
-      }
-
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        padding: 2rem;
-        background: linear-gradient(145deg, #ffffff, #f5f8ff);
-        border-radius: 20px;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        border: 1px solid rgba(78, 115, 223, 0.1);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .contact-item::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(225deg, 
-            rgba(78, 115, 223, 0.1) 0%, 
-            rgba(46, 204, 113, 0.1) 100%);
-        opacity: 0;
-        transition: opacity 0.4s ease;
-      }
-
-      .contact-item:hover {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 10px 30px rgba(78, 115, 223, 0.15);
-        border-color: rgba(78, 115, 223, 0.2);
-      }
-
-      .contact-item:hover::before {
-        opacity: 1;
-      }
-
-      .contact-icon {
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, var(--primary-color), #3756b5);
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.4rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(78, 115, 223, 0.2);
-        position: relative;
-        z-index: 1;
-      }
-
-      .contact-item:hover .contact-icon {
-        transform: scale(1.1) rotate(5deg);
-        box-shadow: 0 8px 20px rgba(78, 115, 223, 0.3);
-      }
-
-      .contact-info {
-        position: relative;
-        z-index: 1;
-      }
-
-      .contact-info h3 {
-        margin-bottom: 0.5rem;
-        color: var(--text-color);
-        font-size: 1.3rem;
-        font-weight: 600;
-        transform: translateY(0);
-        transition: transform 0.3s ease;
-      }
-
-      .contact-item:hover .contact-info h3 {
-        transform: translateY(-2px);
-      }
-
-      .contact-info a {
-        color: var(--primary-color);
-        text-decoration: none;
-        font-size: 1.1rem;
-        display: inline-block;
-        position: relative;
-        padding-bottom: 2px;
-      }
-
-      .contact-info a::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(to right, var(--primary-color), #3756b5);
-        transition: width 0.3s ease;
-      }
-
-      .contact-info a:hover::after {
-        width: 100%;
-      }
-
-      .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-top: 3rem;
-      }
-
-      .social-links a {
-        color: var(--text-color);
-        font-size: 2.5rem;
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        position: relative;
-        padding: 15px;
-        text-decoration: none;
-        background: linear-gradient(135deg, #ffffff, #f5f8ff);
-        border-radius: 20px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .social-links a.tiktok-link {
-        background: linear-gradient(135deg, #000000, #25F4EE, #FE2C55, #000000);
-        background-size: 300% 300%;
-        animation: tiktokGradient 5s ease infinite;
-      }
-
-      @keyframes tiktokGradient {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      .social-links a.tiktok-link i {
-        background: linear-gradient(to right, #25F4EE, #FE2C55);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        transition: all 0.3s ease;
-      }
-
-      .social-links a.tiktok-link:hover i {
-        color: white;
-        background: none;
-      }
-
-      .social-links a::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #25F4EE, #FE2C55);
-        border-radius: 20px;
-        opacity: 0;
-        transition: all 0.3s ease;
-        z-index: -1;
-      }
-
-      .social-links a:hover {
-        transform: translateY(-5px) scale(1.1);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      }
-
-      .social-links a:hover::before {
-        opacity: 1;
-      }
-
-      .social-links a:hover i {
-        color: white;
-      }
-
-      .social-links a:active {
-        transform: translateY(-2px) scale(1.05);
-      }
-
-      @media (max-width: 768px) {
-        .contact-row {
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
-        }
-
-        .contact-item {
-          padding: 1.5rem;
-        }
-
-        .contact-icon {
-          width: 50px;
-          height: 50px;
-          font-size: 1.2rem;
-        }
-
-        .contact-info h3 {
-          font-size: 1.2rem;
-        }
-
-        .contact-info a, .contact-info p {
-          font-size: 1rem;
-        }
-      }
-
-      /* Desktop first - Large screens (1200px and up) */
-      @media (min-width: 1200px) {
-        .container {
-          max-width: 1140px;
-        }
-        .hobby-grid,
-        .contact-grid {
-          grid-template-columns: repeat(4, 1fr);
-        }
-      }
-
-      /* Medium devices (tablets, less than 992px) */
-      @media (max-width: 991.98px) {
-        .container {
-          max-width: 960px;
-          padding: 0 20px;
-        }
-        .hobby-grid,
-        .contact-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1rem;
-        }
-        .header {
-          padding: 3.5rem 0 5.5rem;
-        }
-        .name {
-          font-size: 2.2rem;
-        }
-      }
-
-      /* Small devices (landscape phones, less than 768px) */
-      @media (max-width: 767.98px) {
-        .header {
-          padding: 3rem 0 5rem;
-          clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-        }
-        .name {
-          font-size: 2rem;
-        }
-        .profile-image {
-          width: 150px;
-          height: 150px;
-        }
-        .container {
-          max-width: 720px;
-          margin-top: -30px;
-          padding: 0 15px;
-        }
-        .card {
-          padding: 1.5rem;
-          margin-bottom: 1.5rem;
-        }
-        .section-title {
-          font-size: 1.3rem;
-        }
-        .timeline-item {
-          padding-left: 20px;
-        }
-        .hobby-grid {
-          gap: 1rem;
-        }
-        .hobby-item {
-          padding: 1rem;
-        }
-        .contact-row {
-          grid-template-columns: 1fr;
-          margin-bottom: 1rem;
-        }
-        .contact-wrapper {
-          max-width: 100%;
-        }
-        .social-links {
-          gap: 1rem;
-        }
-      }
-
-      /* Extra small devices (phones, less than 576px) */
-      @media (max-width: 575.98px) {
-        .header {
-          padding: 2rem 0 4rem;
-        }
-        .name {
-          font-size: 1.8rem;
-        }
-        .title {
-          font-size: 1rem;
-        }
-        .profile-image {
-          width: 120px;
-          height: 120px;
-          margin-bottom: 1.5rem;
-        }
-        .container {
-          max-width: 540px;
-          padding: 0 10px;
-        }
-        .hobby-grid {
-          grid-template-columns: 1fr;
-        }
-        .card {
-          padding: 1.25rem;
-          margin-bottom: 1rem;
-        }
-        .section-title {
-          font-size: 1.2rem;
-          margin-bottom: 1rem;
-        }
-        .section-content {
-          font-size: 0.95rem;
-        }
-        .timeline-item h3 {
-          font-size: 1.1rem;
-        }
-        .hobby-item i {
-          font-size: 2rem;
-        }
-        .contact-item {
-          padding: 1rem;
-        }
-      }
-      /* Smooth Scroll */
-      html {
-        scroll-behavior: smooth;
-      }
-
-      /* Scroll Animation Observer */
-      .hidden {
-        opacity: 0;
-        filter: blur(5px);
-        transform: translateX(-100%);
-        transition: all 1s;
-      }
-
-      .show {
-        opacity: 1;
-        filter: blur(0);
-        transform: translateX(0);
-      }
-
-      @media (prefers-reduced-motion) {
-        .hidden {
-          transition: none;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="header">
-        <div class="marquee-container">
-            <div class="marquee-text">
-                12A3 Vui Như Nhà, Học Như Ca, Thi Là Qua
-            </div>
-        </div>
-    <script>
-        // Intersection Observer for scroll animations
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("animate", "show");
-              }
-            });
-          },
-          {
-            threshold: 0.1,
-          }
-        );
-
-        // Observe all cards and elements with 'hidden' class
-        document.addEventListener("DOMContentLoaded", () => {
-          const cards = document.querySelectorAll(".card");
-          const hiddenElements = document.querySelectorAll(".hidden");
-
-          cards.forEach((card) => observer.observe(card));
-          hiddenElements.forEach((el) => observer.observe(el));
-        });
-      </script>
-      <img
-        src="https://i.ibb.co/21pSRG8f/logo12a3.png"
-        alt="Ảnh đại diện"
-        class="profile-image"
-      />
-      <h1 class="name">Tập Thể Lớp 12A3</h1>
-      <p class="title">Năm Học 2025 - 2026</p>
-    </header>
-
-    <div class="container">
-      <section class="card">
-        <h2 class="section-title">Giới Thiệu Lớp 12A3</h2>
-        <div class="section-content">
-          <p>
-            Lớp <strong>12A3</strong> – một tập thể đoàn kết, năng động và sáng
-            tạo của trường <strong>THPT Mai Thanh Thế</strong>. Trải qua ba năm
-            học cùng nhau, 12A3 không chỉ là nơi gắn bó của những người bạn cùng
-            chí hướng mà còn là mái nhà thứ hai, nơi lưu giữ biết bao kỷ niệm
-            của tuổi học trò.
-          </p>
-          <p>
-            Dưới sự dẫn dắt tận tâm của thầy <strong>Trịnh Tùng</strong>, lớp
-            luôn duy trì tinh thần học tập nghiêm túc, tích cực tham gia các
-            phong trào của trường, đồng thời không ngừng phát huy tinh thần sáng
-            tạo và giúp đỡ lẫn nhau. Tập thể 12A3 được biết đến với hình ảnh
-            thân thiện, năng động và luôn cháy hết mình trong mọi hoạt động.
-          </p>
-          <p>
-            Bước vào năm cuối cấp – chặng đường quan trọng nhất của tuổi học
-            trò, mỗi thành viên của 12A3 đều mang trong mình những ước mơ, hoài
-            bão riêng. Dù sau này có đi đến đâu, những ký ức về 12A3 vẫn sẽ luôn
-            là một phần đẹp nhất trong hành trình thanh xuân của mỗi người.
-          </p>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2 class="section-title">Hành Trình Của Lớp</h2>
-        <div class="education-timeline">
-          <div class="timeline-item">
-            <h3>THPT Mai Thanh Thế (2023 - 2024)</h3>
-            <p>
-              • Bắt đầu hành trình học tập tại lớp <strong>10A2</strong> – nơi
-              những bước chân đầu tiên của tuổi học trò cấp ba được ghi dấu,
-              dưới sự dìu dắt tận tâm của thầy <strong>Nguyễn Quốc Tâm</strong>.
-            </p>
-          </div>
-          <div class="timeline-item">
-            <h3>THPT Mai Thanh Thế (2024 - 2025)</h3>
-            <p>
-              • Tiếp tục hành trình tại lớp <strong>11A2</strong>, nơi tập thể
-              gắn bó hơn qua từng hoạt động, cùng cô
-              <strong>Nguyễn Thị Oanh</strong> – người truyền cảm hứng học tập
-              và tinh thần đoàn kết.
-            </p>
-          </div>
-          <div class="timeline-item">
-            <h3>THPT Mai Thanh Thế (2025 - 2026)</h3>
-            <p>
-              • Năm cuối cấp tại lớp <strong>12A3</strong> – khoảnh khắc thanh
-              xuân đáng nhớ nhất, cùng thầy <strong>Trịnh Tùng</strong> đồng
-              hành, chuẩn bị cho chặng đường mới với bao hoài bão và ước mơ.
-            </p>
-          </div>
-        </div>
-        <div style="text-align: center;">
-          <a href="memories.html" class="memory-button">
-            <i class="fas fa-camera"></i>Xem Lại Kỷ Niệm
-          </a>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2 class="section-title">Thành Tích Nổi Bật Của Lớp</h2>
-        <ul class="achievement-list">
-          <li>
-            <strong>Năm học 2023 – 2024 (Lớp 10A2):</strong> Chưa có thành tích
-            nổi bật, nhưng là giai đoạn khởi đầu quan trọng để xây dựng tinh
-            thần đoàn kết và ý chí phấn đấu của tập thể lớp.
-          </li>
-          <li>
-            <strong>Năm học 2024 – 2025 (Lớp 11A2):</strong>
-            • Đạt <strong>Giải Nhì</strong> cuộc thi
-            <em>“Thiết kế và Trang trí Thiệp”</em> cấp trường.<br />
-            • Tập thể lớp tích cực hưởng ứng các phong trào do đoàn trường tổ
-            chức <em>“Ngày Chuyển đổi số Quốc gia 10/10/2024”</em>.
-          </li>
-          <li>
-            <strong>Năm học 2025 – 2026 (Lớp 12A3):</strong>
-            Hiện tại chưa có thành tích, nhưng tập thể lớp đang nỗ lực phấn đấu
-            để gặt hái những kết quả tốt đẹp trong năm học cuối cùng.
-          </li>
-        </ul>
-      </section>
-      <section class="card">
-        <h2 class="section-title">Các Thành Viên Lớp Ở Các Tổ</h2>
-        <div class="hobby-grid">
-          <a href="to1.html" class="hobby-item hidden">
-            <i class="fas fa-users"></i>
-            <div class="hobby-item-content">
-              <h3>Tổ 1</h3>
-              <p>Xem thành viên</p>
-            </div>
-          </a>
-
-          <a href="to2.html" class="hobby-item hidden">
-            <i class="fas fa-users"></i>
-            <div class="hobby-item-content">
-              <h3>Tổ 2</h3>
-              <p>Xem thành viên</p>
-            </div>
-          </a>
-
-          <a href="to3.html" class="hobby-item hidden">
-            <i class="fas fa-users"></i>
-            <div class="hobby-item-content">
-              <h3>Tổ 3</h3>
-              <p>Xem thành viên</p>
-            </div>
-          </a>
-
-          <a href="to4.html" class="hobby-item hidden">
-            <i class="fas fa-users"></i>
-            <div class="hobby-item-content">
-              <h3>Tổ 4</h3>
-              <p>Xem thành viên</p>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2 class="section-title">Thông tin liên hệ</h2>
-        <div class="contact-wrapper">
-          <div class="contact-row">
-            <div class="contact-item hidden">
-              <div class="contact-icon">
-                <i class="fab fa-facebook-f"></i>
-              </div>
-              <div class="contact-info">
-                <h3>Facebook</h3>
-                <a href="https://www.facebook.com/share/19fvk4Py1A/" target="_blank"
-                  >Tập Đoàn Trịnh Tổng</a>
-              </div>
-            </div>
-            <div class="contact-item hidden">
-              <div class="contact-icon">
-                <i class="fab fa-tiktok"></i>
-              </div>
-              <div class="contact-info">
-                <h3>TikTok</h3>
-                <a href="https://www.tiktok.com/@12a3anhtring" target="_blank"
-                  >@12a3anhtring</a>
-              </div>
-            </div>
-          </div>
-          <div class="contact-row">
-            <div class="contact-item hidden">
-              <div class="contact-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div class="contact-info">
-                <h3>Email</h3>
-                <p>tronghieu1031@gmail.com</p>
-              </div>
-            </div>
-            <div class="contact-item hidden">
-              <div class="contact-icon">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div class="contact-info">
-                <h3>Địa chỉ</h3>
-                <p>Đường Mai Thanh Thế, Phường Ngã Năm, Thành Phố Cần Thơ</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lớp 12A3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" type="image/png" href="https://i.ibb.co/21pSRG8f/logo12a3.png">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">
+      <div class="logo-icon">🎓</div>
+      Khóa 2025 - 2026
     </div>
-  </body>
-</html>
+    <ul class="nav-links">
+      <li><a href="#members">Thành viên</a></li>
+      <li><a href="#albums">Ảnh & Kỷ niệm</a></li>
+      <li><a href="#timeline">Sự kiện</a></li>
+      <li><a href="#share">Chia sẻ</a></li>
+    </ul>
+  </nav>
 
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="floating-elements">
+      <div class="float-item"></div>
+      <div class="float-item"></div>
+      <div class="float-item"></div>
+      <div class="float-item"></div>
+    </div>
+    <div class="hero-content">
+      <h1>Bạn bè <span>Mãi Mãi,</span><br>Kỷ Niệm Bất Tận</h1>
+      <p>Tái hiện tiếng cười, những bài học và tình yêu chúng ta đã chia sẻ. Một cuốn album kỹ thuật số ăn mừng cuộc hành trình chung của chúng ta qua những năm tháng đẹp nhất.</p>
+      <div class="hero-buttons">
+        <a href="#albums" class="clay-button">Khám phá Kỷ niệm</a>
+        <a href="#share" class="clay-button secondary">Chia sẻ Câu chuyện</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Members Section -->
+  <section id="members">
+    <div class="section-header">
+      <span class="section-badge">👥 Thành viên Lớp</span>
+      <h2>Đội Ngũ Chúng Ta</h2>
+      <p>Gặp gỡ những thành viên tuyệt vời của Lớp 12A3</p>
+    </div>
+    
+    <!-- Team Cards -->
+    <div class="teams-grid">
+      <a href="./to1.html" class="team-card clay-card">
+        <div class="team-icon">👥</div>
+        <h3>Tổ 1</h3>
+        <p class="team-count" id="count-1">11 thành viên</p>
+        <span class="view-btn">Xem chi tiết →</span>
+      </a>
+      <a href="./to2.html" class="team-card clay-card">
+        <div class="team-icon">👥</div>
+        <h3>Tổ 2</h3>
+        <p class="team-count" id="count-2">5 thành viên</p>
+        <span class="view-btn">Xem chi tiết →</span>
+      </a>
+      <a href="./to3.html" class="team-card clay-card">
+        <div class="team-icon">👥</div>
+        <h3>Tổ 3</h3>
+        <p class="team-count" id="count-3">9 thành viên</p>
+        <span class="view-btn">Xem chi tiết →</span>
+      </a>
+      <a href="./to4.html" class="team-card clay-card">
+        <div class="team-icon">👥</div>
+        <h3>Tổ 4</h3>
+        <p class="team-count" id="count-4">10 thành viên</p>
+        <span class="view-btn">Xem chi tiết →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Photo Albums Section -->
+  <section id="albums">
+    <div class="section-header">
+      <span class="section-badge">📸 Album Ảnh</span>
+      <h2>Những Khoảnh Khắc Được Ghi Lại</h2>
+      <p>Duyệt qua bộ sưu tập các bức ảnh quý báu</p>
+    </div>
+    <div class="photo-album-grid">
+      <div class="clay-card album-card">
+        <img src="https://i.ibb.co/39JY2BpR/ce4b5ad972e7ffb9a6f618.jpg" alt="Kỷ niệm lớp học" >
+        <h3>Những Ngày Đầu Tiên Của Lớp</h3>
+        <p>Nơi tất cả bắt đầu - những khuôn mặt non nớt và tình bạn mới</p>
+      </div>
+
+      <div class="clay-card album-card">
+        <img src="https://i.ibb.co/HD86PDHj/08ea7c964ba8c6f69fb914.jpg" alt="Kỷ niệm 20/11">
+        <h3>Ngày Nhà Giáo Việt Nam</h3>
+        <p>Một ngày thật ý nghĩa khi lớp cùng nhau tri ân thầy cô – những người đã chắp cánh cho ước mơ của chúng em. Những bó hoa, lời chúc và tiếng cười hồn nhiên đã tạo nên bức tranh ấm áp của tình thầy trò.</p>
+      </div>
+
+      <div class="clay-card album-card">
+        <img src="https://i.ibb.co/gZQ3sCmM/ddbeccf1fbcf76912fde8.jpg" alt="Kỷ niệm 20/11/2024">
+        <h3>Ngày 20/11/2024</h3>
+        <p>Ngày lễ tri ân tràn ngập tiếng cười và cảm xúc. Mỗi lời chúc, mỗi tấm thiệp đều chứa đựng sự biết ơn chân thành gửi đến những người lái đò tận tụy.</p>
+      </div>
+    </div>
+
+    <div class="album-action">
+      <a href="./memories.html" class="view-all-btn">Xem Tất Cả Kỷ Niệm →</a>
+    </div>
+
+  <!-- Timeline Section -->
+  <section id="timeline">
+    <div class="section-header">
+      <span class="section-badge">📅 Cuộc Hành Trình Của Chúng Ta</span>
+      <h2>Dòng Thời Gian Lớp</h2>
+      <p>Một năm đầy sự phát triển, tình bạn và những khoảnh khắc không thể quên</p>
+    </div>
+    <div class="timeline">
+      <div class="clay-card timeline-item">
+        <span class="timeline-date">Tháng 9 năm 2023</span>
+        <h3>🎒 Ngày Đầu Tiên Cùng Nhau</h3>
+        <p>Bắt đầu hành trình học tập tại lớp 10A2 – nơi những bước chân đầu tiên của tuổi học trò cấp ba được ghi dấu, dưới sự dìu dắt tận tâm của thầy <b>Nguyễn Quốc Tâm</b>.</p>
+      </div>
+      <div class="clay-card timeline-item">
+        <span class="timeline-date">Tháng 9 năm 2024</span>
+        <h3>🍂 Mùa Thu 2024</h3>
+        <p>Tiếp tục hành trình tại lớp 11A2, nơi tập thể gắn bó hơn qua từng hoạt động, cùng cô <b>Nguyễn Thị Oanh</b> – người truyền cảm hứng học tập và tinh thần đoàn kết.</p>
+      </div>
+      <div class="clay-card timeline-item">
+        <span class="timeline-date">Tháng 12 năm 2024</span>
+        <h3>❄ Mùa Đông 2024</h3>
+        <p>Cô và các bạn tham gia chuyến trải nghiệm hướng nghiệp tại Đà Lạt.</p>
+      </div>
+      <div class="clay-card timeline-item">
+        <span class="timeline-date">Tháng 2 năm 2024</span>
+        <h3>🌸 Hội Chợ Mùa Xuân</h3>
+        <p>Cả lớp tham gia <b>Hội Chợ Xuân</b> cùng nhau dựng gian hàng để bán đồ ăn.</p>
+      </div>
+      <div class="clay-card timeline-item">
+        <span class="timeline-date">Tháng 9 năm 2025</span>
+        <h3>🎓 Năm Cuối Cấp</h3>
+        <p>Năm cuối cấp tại lớp 12A3 – khoảnh khắc thanh xuân đáng nhớ nhất, cùng thầy <b>Trịnh Tùng</b> đồng hành, chuẩn bị cho chặng đường mới với bao hoài bão và ước mơ.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA Section -->
+  <section id="share" class="cta-section">
+    <h2>Chia Sẻ Kỷ Niệm Của Bạn</h2>
+    <p>Có một khoảnh khắc đặc biệt mà bạn muốn thêm vào bộ sưu tập của chúng ta không? Mỗi câu chuyện đều quan trọng, mỗi kỷ niệm đều có giá trị. Hãy giữ tinh thần của lớp chúng ta sống động!</p>
+    <div class="cta-form">
+      <input type="text" class="cta-input" placeholder="Tên của bạn">
+      <input type="email" class="cta-input" placeholder="Email của bạn">
+    </div>
+    <div style="margin-top: 20px;">
+      <button class="clay-button">Gửi Kỷ Niệm Của Bạn 💝</button>
+    </div>
+  </section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-hearts">💛 🧡 💗 💜 💙</div>
+    <p class="footer-text">Tạo bởi <span class="highlight">Lớp 12A3</span></p>
+    <p class="footer-subtext">Mãi mãi trong trái tim chúng ta</p>
+    
+    <div class="social-links">
+      <a href="https://www.facebook.com/share/19fvk4Py1A/" target="_blank" rel="noopener" class="social-icon facebook" title="Facebook" aria-label="Facebook">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png" alt="Facebook" width="24" height="24">
+      </a>
+      <a href="https://www.tiktok.com/@12a3anhtring" target="_blank" rel="noopener" class="social-icon tiktok" title="TikTok" aria-label="TikTok">
+        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" width="24" height="24">
+      </a>
+    </div>
+    
+    <p class="footer-copyright">© 2025 Kỷ Yếu 12A3. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
