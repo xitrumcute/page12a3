@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giới Thiệu - Lớp 12A3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" type="image/png" href="https://i.ibb.co/21pSRG8f/logo12a3.png">
+  <style>
+    /* About Page Specific Styles */
+    .about-hero {
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      background: linear-gradient(rgba(199, 198, 196, 0.6), rgba(255, 229, 180, 0.4)), url('./image/background.jpg') center/cover no-repeat;
+    }
+
+    .about-hero h1 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--coral);
+      margin-bottom: 15px;
+      text-shadow: 3px 3px 0 var(--peach);
+    }
+
+    .about-hero p {
+      font-size: 1.3rem;
+      color: var(--text-light);
+      max-width: 650px;
+    }
+
+    /* About Content */
+    .about-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .about-intro {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .about-intro h2 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 2.5rem;
+      color: var(--warm-brown);
+      margin-bottom: 20px;
+    }
+
+    .about-intro p {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Info Cards Grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .info-card {
+      padding: 35px 30px;
+      text-align: center;
+    }
+
+    .info-card .card-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .info-card h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.4rem;
+      color: var(--warm-brown);
+      margin-bottom: 12px;
+    }
+
+    .info-card p {
+      font-size: 1rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* Teacher Section */
+    .teachers-section {
+      margin-bottom: 60px;
+    }
+
+    .teachers-section h2 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 2.5rem;
+      color: var(--warm-brown);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .teacher-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .teacher-card {
+      padding: 30px;
+      text-align: center;
+    }
+
+    .teacher-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      box-shadow:
+        6px 6px 12px rgba(139, 115, 85, 0.15),
+        -4px -4px 10px rgba(255, 255, 255, 0.9);
+    }
+
+    .teacher-avatar.year1 {
+      background: linear-gradient(145deg, var(--coral), #ff8a8a);
+    }
+
+    .teacher-avatar.year2 {
+      background: linear-gradient(145deg, var(--golden), #ffec8b);
+    }
+
+    .teacher-avatar.year3 {
+      background: linear-gradient(145deg, var(--mint), #7bc88a);
+    }
+
+    .teacher-card h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.3rem;
+      color: var(--warm-brown);
+      margin-bottom: 6px;
+    }
+
+    .teacher-card .teacher-role {
+      font-size: 0.9rem;
+      color: var(--coral);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .teacher-card p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+      padding: 40px 20px;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 25px 30px;
+      min-width: 150px;
+    }
+
+    .stat-item .stat-number {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--coral);
+      display: block;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-item .stat-label {
+      font-size: 1rem;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    /* Values Section */
+    .values-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .values-section h2 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 2.5rem;
+      color: var(--warm-brown);
+      margin-bottom: 40px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .value-card {
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .value-card .value-icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .value-card h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.2rem;
+      color: var(--warm-brown);
+      margin-bottom: 8px;
+    }
+
+    .value-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .about-hero h1 {
+        font-size: 2.5rem;
+      }
+      .about-hero p {
+        font-size: 1.1rem;
+      }
+      .about-intro h2,
+      .teachers-section h2,
+      .values-section h2 {
+        font-size: 2rem;
+      }
+      .stats-section {
+        gap: 20px;
+      }
+      .stat-item .stat-number {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .about-hero {
+        padding: 60px 15px;
+      }
+      .about-hero h1 {
+        font-size: 2rem;
+      }
+      .info-grid,
+      .teacher-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Banner -->
+  <div class="top-banner">
+    <img src="./image/banner.png" alt="Banner Lớp 12A3">
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <ul class="nav-links">
+      <li><a href="./index.html">Trang chủ</a></li>
+      <li><a href="./about.html">Giới thiệu</a></li>
+      <li><a href="./member.html">Thành viên</a></li>
+      <li><a href="./memories.html">Kỷ niệm</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- About Content -->
+  <div class="about-container">
+
+    <!-- Intro -->
+    <div class="about-intro">
+      <h2>Lớp 12A3 – THPT Mai Thanh Thế</h2>
+      <p>
+        Chúng tôi là tập thể lớp 12A3, trường THPT Mai Thanh Thế – một lớp học không chỉ là nơi truyền đạt kiến thức mà còn là mái nhà thứ hai, nơi mỗi thành viên đều được yêu thương, gắn bó và cùng nhau trưởng thành. Từ những ngày đầu tiên bỡ ngỡ ở lớp 10A2, qua lớp 11A2 đầy kỷ niệm, đến năm cuối cấp 12A3 – hành trình 3 năm đã gắn kết chúng tôi thành một gia đình thực sự.
+      </p>
+    </div>
+
+    <!-- Info Cards -->
+    <div class="info-grid">
+      <div class="clay-card info-card">
+        <span class="card-icon">🏫</span>
+        <h3>Trường THPT Mai Thanh Thế</h3>
+        <p>Ngôi trường thân yêu đã chắp cánh cho bao thế hệ học sinh. Nơi đây, chúng tôi đã có những năm tháng đẹp nhất của tuổi học trò.</p>
+      </div>
+      <div class="clay-card info-card">
+        <span class="card-icon">📚</span>
+        <h3>Khóa 2023 – 2026</h3>
+        <p>Ba năm cấp ba với biết bao kỷ niệm: từ lớp 10A2, qua 11A2 và giờ là 12A3 – mỗi năm một sắc màu, một câu chuyện riêng.</p>
+      </div>
+      <div class="clay-card info-card">
+        <span class="card-icon">💪</span>
+        <h3>Tinh Thần Đoàn Kết</h3>
+        <p>Dù ở hoạt động nào, lớp chúng tôi luôn đồng lòng, hỗ trợ lẫn nhau và không ngừng phấn đấu để đạt được những thành tích tốt nhất.</p>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-section">
+      <div class="clay-card stat-item">
+        <span class="stat-number">41</span>
+        <span class="stat-label">Thành viên</span>
+      </div>
+      <div class="clay-card stat-item">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Năm gắn bó</span>
+      </div>
+      <div class="clay-card stat-item">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Giáo viên chủ nhiệm</span>
+      </div>
+      <div class="clay-card stat-item">
+        <span class="stat-number">∞</span>
+        <span class="stat-label">Kỷ niệm</span>
+      </div>
+    </div>
+
+    <!-- Teachers -->
+    <div class="teachers-section">
+      <h2>Thầy Cô Chủ Nhiệm Qua Các Năm</h2>
+      <div class="teacher-grid">
+        <div class="clay-card teacher-card">
+          <div class="teacher-avatar year1">👨‍🏫</div>
+          <h3>Thầy Nguyễn Quốc Tâm</h3>
+          <p class="teacher-role">Chủ nhiệm lớp 10A2 (2023–2024)</p>
+          <p>Người thầy đầu tiên dìu dắt lớp bước vào cánh cổng cấp ba, tạo nền tảng vững chắc cho tập thể lớp.</p>
+        </div>
+        <div class="clay-card teacher-card">
+          <div class="teacher-avatar year2">👩‍🏫</div>
+          <h3>Cô Nguyễn Thị Oanh</h3>
+          <p class="teacher-role">Chủ nhiệm lớp 11A2 (2024–2025)</p>
+          <p>Cô giáo tận tâm, luôn truyền cảm hứng học tập và tinh thần đoàn kết cho các em học sinh.</p>
+        </div>
+        <div class="clay-card teacher-card">
+          <div class="teacher-avatar year3">👨‍🏫</div>
+          <h3>Thầy Trịnh Tùng</h3>
+          <p class="teacher-role">Chủ nhiệm lớp 12A3 (2025–2026)</p>
+          <p>Đồng hành cùng lớp trong năm cuối cấp, hướng dẫn và chuẩn bị cho các em bước vào kỳ thi tốt nghiệp.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div class="values-section">
+      <h2>Giá Trị Cốt Lõi Của Lớp</h2>
+      <div class="values-grid">
+        <div class="clay-card value-card">
+          <span class="value-icon">🤝</span>
+          <h3>Đoàn Kết</h3>
+          <p>Luôn sát cánh bên nhau trong mọi hoạt động</p>
+        </div>
+        <div class="clay-card value-card">
+          <span class="value-icon">📖</span>
+          <h3>Học Hỏi</h3>
+          <p>Không ngừng nỗ lực, cầu tiến trong học tập</p>
+        </div>
+        <div class="clay-card value-card">
+          <span class="value-icon">🎨</span>
+          <h3>Sáng Tạo</h3>
+          <p>Dám nghĩ, dám làm và luôn tìm cách đổi mới</p>
+        </div>
+        <div class="clay-card value-card">
+          <span class="value-icon">❤️</span>
+          <h3>Yêu Thương</h3>
+          <p>Quan tâm, chia sẻ và yêu thương lẫn nhau</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-hearts">💛 🧡 💗 💜 💙</div>
+      <p class="footer-text">Website Code By <span class="highlight">David Bepo</span></p>
+      <p class="footer-subtext">Mãi mãi trong trái tim chúng ta</p>
+
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/19fvk4Py1A/" target="_blank" rel="noopener" class="social-icon facebook" title="Facebook" aria-label="Facebook">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png" alt="Facebook" width="24" height="24">
+        </a>
+        <a href="https://www.tiktok.com/@12a3anhtring" target="_blank" rel="noopener" class="social-icon tiktok" title="TikTok" aria-label="TikTok">
+          <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" width="24" height="24">
+        </a>
+      </div>
+
+      <p class="footer-copyright">© 2025 Kỷ Yếu 12A3. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

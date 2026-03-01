@@ -6,350 +6,809 @@
   <title>Kỷ Niệm - Lớp 12A3</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="icon" type="image/png" href="https://i.ibb.co/21pSRG8f/logo12a3.png">
   <style>
-    /* Memories Page Specific Styles */
-    .memories-header {
-      min-height: 60vh;
+    /* ===== Threads Clone Styles ===== */
+    .threads-wrapper {
+      background: #101010;
+      min-height: 100vh;
+    }
+
+    .threads-feed {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 8px 0;
+    }
+
+    /* Thread Post */
+    .thread-post {
+      display: flex;
+      padding: 16px 16px 0 16px;
+      position: relative;
+    }
+
+    .thread-post::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 72px;
+      right: 16px;
+      height: 1px;
+      background: #333;
+    }
+
+    /* Left Column: Avatar + Line */
+    .thread-left {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 120px 20px 80px;
-      position: relative;
-      background: linear-gradient(135deg, var(--cream) 0%, var(--peach) 50%, var(--lavender) 100%);
+      margin-right: 12px;
+      flex-shrink: 0;
+      width: 40px;
     }
 
-    .memories-header h1 {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: var(--coral);
-      margin-bottom: 20px;
-      text-shadow: 3px 3px 0 var(--peach);
-    }
-
-    .memories-header p {
-      font-size: 1.3rem;
-      color: var(--text-light);
-      margin-bottom: 30px;
-    }
-
-    .memories-container {
-      max-width: 1200px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-
-    .memories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      margin-bottom: 80px;
-    }
-
-    .memory-card {
-      background: linear-gradient(145deg, #ffffff, #f0e6d8);
-      border-radius: 30px;
-      box-shadow: 
-        12px 12px 24px rgba(139, 115, 85, 0.15),
-        -8px -8px 20px rgba(255, 255, 255, 0.9),
-        inset 2px 2px 4px rgba(255, 255, 255, 0.8),
-        inset -2px -2px 4px rgba(139, 115, 85, 0.1);
-      border: 3px solid rgba(255, 255, 255, 0.6);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    .thread-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
+      flex-shrink: 0;
+      border: 1px solid #333;
     }
 
-    .memory-card:hover {
-      transform: translateY(-12px) scale(1.02);
-      box-shadow: 
-        16px 16px 32px rgba(139, 115, 85, 0.2),
-        -10px -10px 24px rgba(255, 255, 255, 1),
-        inset 2px 2px 4px rgba(255, 255, 255, 0.9),
-        inset -2px -2px 4px rgba(139, 115, 85, 0.1);
-    }
-
-    .memory-image-wrapper {
-      width: 100%;
-      height: 280px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .memory-image-wrapper img {
+    .thread-avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
     }
 
-    .memory-card:hover .memory-image-wrapper img {
-      transform: scale(1.08);
-    }
-
-    .memory-content {
-      padding: 25px 30px;
+    .thread-line {
+      width: 2px;
       flex-grow: 1;
+      background: #333;
+      margin: 8px 0;
+      border-radius: 1px;
+      min-height: 16px;
+    }
+
+    .thread-reply-avatars {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
     }
 
-    .memory-content h3 {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.3rem;
-      color: var(--coral);
-      margin-bottom: 12px;
+    .mini-avatar {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1px solid #101010;
+      margin-left: -4px;
+      overflow: hidden;
+    }
+
+    .mini-avatar:first-child {
+      margin-left: 0;
+    }
+
+    .mini-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Right Column: Content */
+    .thread-content {
+      flex: 1;
+      min-width: 0;
+      padding-bottom: 16px;
+    }
+
+    .thread-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .thread-user-info {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .thread-username {
+      font-family: 'Inter', sans-serif;
       font-weight: 600;
-    }
-
-    .memory-date {
       font-size: 0.95rem;
-      color: var(--warm-brown);
-      margin-bottom: 15px;
-      font-weight: 500;
+      color: #f5f5f5;
     }
 
-    .memory-description {
-      font-size: 0.95rem;
-      color: var(--text-light);
-      line-height: 1.6;
-      flex-grow: 1;
-    }
-
-    .back-link {
+    .thread-verified {
+      width: 14px;
+      height: 14px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      color: var(--coral);
-      text-decoration: none;
-      font-weight: 600;
-      padding: 12px 24px;
-      border-radius: 25px;
-      background: linear-gradient(145deg, rgba(255, 107, 107, 0.1), transparent);
-      transition: all 0.3s ease;
-      width: fit-content;
-      margin: 40px auto 0;
-    }
-
-    .back-link:hover {
-      background: linear-gradient(145deg, var(--coral), #ff5252);
+      justify-content: center;
+      background: #0095f6;
+      border-radius: 50%;
+      font-size: 8px;
       color: white;
-      transform: translateX(-4px);
+      flex-shrink: 0;
     }
 
-    @media (max-width: 768px) {
-      .memories-header h1 {
-        font-size: 2.5rem;
-      }
-
-      .memories-header p {
-        font-size: 1.1rem;
-      }
-
-      .memories-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-      }
-
-      .memory-image-wrapper {
-        height: 240px;
-      }
-
-      .memory-content {
-        padding: 20px 25px;
-      }
+    .thread-header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
+    .thread-time {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: #777;
+    }
+
+    .thread-more {
+      background: none;
+      border: none;
+      color: #f5f5f5;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+      letter-spacing: 2px;
+    }
+
+    /* Post Text */
+    .thread-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.94rem;
+      color: #f5f5f5;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      word-break: break-word;
+    }
+
+    .thread-text strong {
+      color: #fff;
+    }
+
+    /* Post Image */
+    .thread-image {
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      border: 1px solid #262626;
+    }
+
+    .thread-image img {
+      width: 100%;
+      height: auto;
+      max-height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .thread-image video {
+      width: 100%;
+      max-height: 500px;
+      display: block;
+      background: #000;
+      border-radius: 0;
+    }
+
+    /* Action Buttons */
+    .thread-actions {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .thread-action-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      transition: background 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .thread-action-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .thread-action-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: #b8b8b8;
+      stroke-width: 2;
+      transition: all 0.2s ease;
+    }
+
+    .thread-action-btn.liked svg {
+      fill: #ff3040;
+      stroke: #ff3040;
+    }
+
+    .thread-action-btn:hover svg {
+      stroke: #f5f5f5;
+    }
+
+    /* Post Stats */
+    .thread-stats {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: #777;
+      padding-bottom: 4px;
+    }
+
+    .thread-stats span {
+      cursor: pointer;
+    }
+
+    .thread-stats span:hover {
+      text-decoration: underline;
+    }
+
+    /* Page Header for Threads */
+    .threads-page-header {
+      text-align: center;
+      padding: 24px 16px 12px;
+      border-bottom: 1px solid #333;
+    }
+
+    .threads-page-header h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #f5f5f5;
+      margin-bottom: 2px;
+    }
+
+    .threads-page-header p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    /* Multi-image grid (Threads style) */
+    .thread-images-grid {
+      display: grid;
+      gap: 3px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      border: 1px solid #262626;
+    }
+
+    .thread-images-grid.grid-1 {
+      grid-template-columns: 1fr;
+    }
+
+    .thread-images-grid.grid-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .thread-images-grid.grid-3 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .thread-images-grid.grid-3 .grid-item:first-child {
+      grid-column: 1 / -1;
+    }
+
+    .thread-images-grid .grid-item {
+      overflow: hidden;
+      position: relative;
+      background: #000;
+    }
+
+    .thread-images-grid .grid-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .thread-images-grid.grid-1 .grid-item img {
+      height: auto;
+      max-height: 420px;
+    }
+
+    .thread-images-grid .grid-item video {
+      width: 100%;
+      max-height: 380px;
+      display: block;
+      background: #000;
+    }
+
+    .thread-images-grid .grid-item img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Responsive */
     @media (max-width: 480px) {
-      .memories-header {
-        padding: 80px 20px 60px;
+      .thread-post {
+        padding: 12px 12px 0;
       }
-
-      .memories-header h1 {
-        font-size: 2rem;
+      .thread-post::after {
+        left: 60px;
+        right: 12px;
       }
-
-      .memories-header p {
-        font-size: 1rem;
+      .thread-left {
+        width: 34px;
+        margin-right: 10px;
       }
-
-      .memories-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
+      .thread-avatar {
+        width: 34px;
+        height: 34px;
       }
-
-      .memory-image-wrapper {
-        height: 200px;
+      .thread-username {
+        font-size: 0.88rem;
+      }
+      .thread-text {
+        font-size: 0.88rem;
+      }
+      .thread-image img {
+        max-height: 320px;
+      }
+      .thread-images-grid .grid-item img {
+        height: 160px;
+      }
+      .thread-images-grid.grid-1 .grid-item img {
+        height: auto;
+        max-height: 320px;
       }
     }
   </style>
 </head>
 
 <body>
+  <!-- Banner -->
+  <div class="top-banner">
+    <img src="./image/banner.png" alt="Banner Lớp 12A3">
+  </div>
+
   <!-- Navigation -->
   <nav>
-    <div class="logo">
-      <div class="logo-icon">🎓</div>
-      Khóa 2025 - 2026
-    </div>
     <ul class="nav-links">
-      <li><a href="./index.html#albums">← Quay lại</a></li>
+      <li><a href="./index.html">Trang chủ</a></li>
+      <li><a href="./about.html">Giới thiệu</a></li>
+      <li><a href="./member.html">Thành viên</a></li>
+      <li><a href="./memories.html">Kỷ niệm</a></li>
     </ul>
   </nav>
 
-  <!-- Header Section -->
-  <section class="memories-header">
-    <h1>Kỷ Niệm Lớp 12A3</h1>
-    <p>Những khoảnh khắc đáng nhớ của chúng ta</p>
-  </section>
+  <!-- Threads Dark Container -->
+  <div class="threads-wrapper">
 
-  <!-- Memories Grid -->
-  <div class="memories-container">
+    <div class="threads-page-header">
+      <h1>Kỷ Niệm Lớp 12A3</h1>
+      <p>Những khoảnh khắc đáng nhớ của chúng ta</p>
+    </div>
 
-    <div class="container">
-        <div class="memory-grid">
+    <div class="threads-feed">
 
-            <div class="memory-card">
-                <img src="https://i.ibb.co/39JY2BpR/ce4b5ad972e7ffb9a6f618.jpg" alt="Kỷ niệm lớp học"
-                    class="memory-image">
-                <div class="memory-info">
-                    <h3>Những Ngày Đầu Tiên Của Lớp</h3>
-                    <div class="memory-date">
-                        <i class="far fa-calendar-alt"></i> 13/10/2023
-                    </div>
-                    <p class="memory-description">
-                        Khoảnh khắc mở đầu hành trình của tập thể <strong>10A2</strong> – những gương mặt mới, nụ cười
-                        rụt rè và cả sự háo hức của tuổi học trò.
-                        Một khởi đầu giản dị nhưng đầy ý nghĩa, nơi tình bạn và ký ức đầu tiên bắt đầu đâm chồi dưới mái
-                        trường <strong>THPT Mai Thanh Thế</strong>.
-                    </p>
-                </div>
-            </div>
-
-            <div class="memory-card">
-                <img src="https://i.ibb.co/HD86PDHj/08ea7c964ba8c6f69fb914.jpg" alt="Kỷ niệm 20/11"
-                    class="memory-image">
-                <div class="memory-info">
-                    <h3>Ngày Nhà Giáo Việt Nam 20/11</h3>
-                    <div class="memory-date">
-                        <i class="far fa-calendar-alt"></i> 20/11/2023
-                    </div>
-                    <p class="memory-description">
-                        Một ngày thật ý nghĩa khi lớp <strong>10A2</strong> cùng nhau tri ân thầy cô – những người đã
-                        chắp cánh cho ước mơ của chúng em.
-                        Những bó hoa, lời chúc và tiếng cười hồn nhiên đã tạo nên bức tranh ấm áp của tình thầy trò.
-                    </p>
-                </div>
-            </div>
-
-            <div class="memory-card">
-                <img src="https://i.ibb.co/gZQ3sCmM/ddbeccf1fbcf76912fde8.jpg" alt="Kỷ niệm 20/11/2024"
-                    class="memory-image">
-                <div class="memory-info">
-                    <h3>20/11/2024 – Tri Ân Thầy Cô</h3>
-                    <div class="memory-date">
-                        <i class="far fa-calendar-alt"></i> 20/11/2024
-                    </div>
-                    <p class="memory-description">
-                        Ngày lễ tri ân trong năm học lớp <strong>11A2</strong> tràn ngập tiếng cười và cảm xúc.
-                        Mỗi lời chúc, mỗi tấm thiệp đều chứa đựng sự biết ơn chân thành gửi đến những người lái đò tận
-                        tụy.
-                    </p>
-                </div>
-            </div>
-
-            <div class="memory-card">
-                <img src="https://i.ibb.co/35RYPc5t/572709523e6cb332ea7d12.jpg" alt="Sinh nhật cô Oanh"
-                    class="memory-image">
-                <div class="memory-info">
-                    <h3>Sinh Nhật Cô Nguyễn Thị Oanh</h3>
-                    <div class="memory-date">
-                        <i class="far fa-calendar-alt"></i> 18/10/2024
-                    </div>
-                    <p class="memory-description">
-                        Một buổi sinh nhật ấm áp dành tặng cô chủ nhiệm <strong>Nguyễn Thị Oanh</strong> – người luôn
-                        tận tâm và hết lòng vì học sinh.
-                        Tiếng cười vang khắp lớp, tình cảm cô trò càng thêm gắn bó qua từng khoảnh khắc.
-                    </p>
-                </div>
-            </div>
-
-            <div class="memory-card">
-                <img src="https://i.ibb.co/whPJVtkz/1a60469171affcf1a5be2.jpg" alt="Hội chợ trường"
-                    class="memory-image">
-                <div class="memory-info">
-                    <h3>Hội Chợ Mùa Đông</h3>
-                    <div class="memory-date">
-                        <i class="far fa-calendar-alt"></i> 24/11/2025
-                    </div>
-                    <p class="memory-description">
-                        Hội chợ năm học là dịp để lớp <strong>11A2</strong> cùng nhau trải nghiệm, sáng tạo và gắn kết.
-                        Gian hàng rực rỡ, tiếng cười rộn ràng – tất cả đã làm nên một kỷ niệm khó quên trong tuổi học
-                        trò.
-                    </p>
-                </div>
-            </div>
-
-            <div class="memory-card">
-                <img src="https://i.ibb.co/GQnsG58G/73038576b2483f16665911.jpg" alt="Nhà giáo Việt Nam"
-                    class="memory-image">
-                <div class="memory-info">
-                    <h3>Tri Ân Ngày Nhà Giáo Việt Nam</h3>
-                    <div class="memory-date">
-                        <i class="far fa-calendar-alt"></i> 20/10/2024
-                    </div>
-                    <p class="memory-description">
-                        Lớp <strong>11A2</strong> cùng cô <strong>Ngô Hải Yến</strong> đón ngày lễ với tràn ngập tiếng
-                        cười và niềm vui.
-                        Những lời chúc mộc mạc nhưng chân thành đã nói thay tấm lòng của mỗi học sinh dành cho thầy cô.
-                    </p>
-                </div>
-            </div>
-
-            <div class="memory-card">
-                <img src="https://i.ibb.co/zWt9HKdv/968fe678d1465c1805574.jpg" alt="Thành tích chuyển đổi số"
-                    class="memory-image">
-                <div class="memory-info">
-                    <h3>Thành Tích Của Lớp</h3>
-                    <div class="memory-date">
-                        <i class="far fa-calendar-alt"></i> 10/10/2024
-                    </div>
-                    <p class="memory-description">
-                        Lớp <strong>11A2</strong> đạt thành tích xuất sắc trong hoạt động hưởng ứng <em>“Ngày Chuyển Đổi
-                            Số Quốc Gia”</em> năm học 2024–2025.
-                        Đây là niềm tự hào và là minh chứng cho tinh thần năng động, sáng tạo của cả tập thể.
-                    </p>
-                </div>
-            </div>
-
-            <div class="memory-card">
-                <img src="https://i.ibb.co/R43g0ffW/cea66054576ada34837b3.jpg" alt="Thiết kế thiệp"
-                    class="memory-image">
-                <div class="memory-info">
-                    <h3>Giải Nhì Cuộc Thi “Thiết Kế Và Trang Trí Thiệp”</h3>
-                    <div class="memory-date">
-                        <i class="far fa-calendar-alt"></i> 10/10/2024
-                    </div>
-                    <p class="memory-description">
-                        Một dấu ấn đáng nhớ khi lớp <strong>11A2</strong> xuất sắc giành <strong>Giải Nhì</strong> cuộc
-                        thi <em>“Thiết kế và Trang trí Thiệp”</em> năm học 2024–2025.
-                        Thành công này là kết quả của sự đoàn kết, sáng tạo và nỗ lực không ngừng của từng thành viên.
-                    </p>
-                </div>
-            </div>
-
+      <!-- Post 1 -->
+      <div class="thread-post">
+        <div class="thread-left">
+          <div class="thread-avatar">
+            <img src="https://i.ibb.co/21pSRG8f/logo12a3.png" alt="12A3">
+          </div>
+          <div class="thread-line"></div>
+          <div class="thread-reply-avatars">
+            <div class="mini-avatar"><img src="https://i.ibb.co/21pSRG8f/logo12a3.png" alt=""></div>
+          </div>
         </div>
-    </div>
+        <div class="thread-content">
+          <div class="thread-header">
+            <div class="thread-user-info">
+              <span class="thread-username">Khả Ái</span>
+              <span class="thread-verified">✓</span>
+            </div>
+            <div class="thread-header-right">
+              <span class="thread-time">13/10/2025</span>
+              <button class="thread-more">···</button>
+            </div>
+          </div>
+          <p class="thread-text">
+            Làm lồng đèn nhe ae!!
+          </p>
+          <div class="thread-image">
+            <video src="./video/122586317255899842.mp4" controls></video>
+          </div>
+          <div class="thread-actions">
+            <button class="thread-action-btn" onclick="toggleLike(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+          <div class="thread-stats">
+            <span>36 lượt thích</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 2 -->
+      <div class="thread-post">
+        <div class="thread-left">
+          <div class="thread-avatar">
+            <img src="https://i.ibb.co/21pSRG8f/logo12a3.png" alt="12A3">
+          </div>
+          <div class="thread-line"></div>
+          <div class="thread-reply-avatars">
+            <div class="mini-avatar"><img src="https://i.ibb.co/21pSRG8f/logo12a3.png" alt=""></div>
+          </div>
+        </div>
+        <div class="thread-content">
+          <div class="thread-header">
+            <div class="thread-user-info">
+              <span class="thread-username">Ngọc Thảo</span>
+              <span class="thread-verified">✓</span>
+            </div>
+            <div class="thread-header-right">
+              <span class="thread-time">26/10/2025</span>
+              <button class="thread-more">···</button>
+            </div>
+          </div>
+          <p class="thread-text">
+            thả lồng đèn nèee
+          </p>
+          <div class="thread-image">
+            <img src="./image/53a243b6fb64753a2c75.jpg">
+          </div>
+          <div class="thread-actions">
+            <button class="thread-action-btn" onclick="toggleLike(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+          <div class="thread-stats">
+            <span>28 lượt thích</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 3 -->
+      <div class="thread-post">
+        <div class="thread-left">
+          <div class="thread-avatar">
+            <img src="https://i.ibb.co/21pSRG8f/logo12a3.png" alt="12A3">
+          </div>
+          <div class="thread-line"></div>
+          <div class="thread-reply-avatars">
+            <div class="mini-avatar"><img src="https://i.ibb.co/21pSRG8f/logo12a3.png" alt=""></div>
+          </div>
+        </div>
+        <div class="thread-content">
+          <div class="thread-header">
+            <div class="thread-user-info">
+              <span class="thread-username">Khả Ái</span>
+              <span class="thread-verified">✓</span>
+            </div>
+            <div class="thread-header-right">
+              <span class="thread-time">22/1/2026</span>
+              <button class="thread-more">···</button>
+            </div>
+          </div>
+          <p class="thread-text">
+            tập luyện múa lân chuẩn bị cho CLB Tiếng Anh
+          </p>
+          <!-- Video riêng -->
+          <div class="thread-image" style="margin-bottom:3px;">
+            <video src="./video/8154500537234314691.mp4" controls></video>
+          </div>
+          <!-- 2 ảnh theo dạng grid Threads -->
+          <div class="thread-images-grid grid-2">
+            <div class="grid-item"><img src="./image/beeb1ac6a614284a7105.jpg" alt="múa lân 1"></div>
+            <div class="grid-item"><img src="./image/acae766ecebc40e219ad.jpg" alt="múa lân 2"></div>
+          </div>
+          <div class="thread-actions">
+            <button class="thread-action-btn" onclick="toggleLike(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+          <div class="thread-stats">
+            <span>42 lượt thích</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 4 -->
+      <div class="thread-post">
+        <div class="thread-left">
+          <div class="thread-avatar">
+            <img src="https://i.ibb.co/21pSRG8f/logo12a3.png" alt="12A3">
+          </div>
+          <div class="thread-line"></div>
+          <div class="thread-reply-avatars">
+            <div class="mini-avatar"><img src="https://i.ibb.co/21pSRG8f/logo12a3.png" alt=""></div>
+          </div>
+        </div>
+        <div class="thread-content">
+          <div class="thread-header">
+            <div class="thread-user-info">
+              <span class="thread-username">Trọng Hiếu</span>
+              <span class="thread-verified">✓</span>
+            </div>
+            <div class="thread-header-right">
+              <span class="thread-time">28/1/2026</span>
+              <button class="thread-more">···</button>
+            </div>
+          </div>
+          <p class="thread-text">
+            Đi chọn đồ cho Quốc Khánh để đi thi duyên dáng học đường
+          </p>
+          <div class="thread-image">
+            <img src="./image/774d1bd5a60728597116.jpg">
+          </div>
+          <div class="thread-actions">
+            <button class="thread-action-btn" onclick="toggleLike(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+          <div class="thread-stats">
+            <span>31 lượt thích</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 5 -->
+      <div class="thread-post">
+        <div class="thread-left">
+          <div class="thread-avatar">
+            <img src="https://i.ibb.co/21pSRG8f/logo12a3.png" alt="12A3">
+          </div>
+          <div class="thread-line"></div>
+          <div class="thread-reply-avatars">
+            <div class="mini-avatar"><img src="https://i.ibb.co/21pSRG8f/logo12a3.png" alt=""></div>
+          </div>
+        </div>
+        <div class="thread-content">
+          <div class="thread-header">
+            <div class="thread-user-info">
+              <span class="thread-username">lop12a3</span>
+              <span class="thread-verified">✓</span>
+            </div>
+            <div class="thread-header-right">
+              <span class="thread-time">29/1/2026</span>
+              <button class="thread-more">···</button>
+            </div>
+          </div>
+          <p class="thread-text">
+            lụm giải nhì vô vòng trong nheee
+          </p>
+          <div class="thread-image">
+            <img src="./image/c588de7161a3effdb6b2.jpg">
+          </div>
+          <div class="thread-actions">
+            <button class="thread-action-btn" onclick="toggleLike(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+          <div class="thread-stats">
+            <span>100 lượt thích</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 6 -->
+      <div class="thread-post">
+        <div class="thread-left">
+          <div class="thread-avatar">
+            <img src="https://i.ibb.co/21pSRG8f/logo12a3.png" alt="12A3">
+          </div>
+          <div class="thread-line"></div>
+          <div class="thread-reply-avatars">
+            <div class="mini-avatar"><img src="https://i.ibb.co/21pSRG8f/logo12a3.png" alt=""></div>
+          </div>
+        </div>
+        <div class="thread-content">
+          <div class="thread-header">
+            <div class="thread-user-info">
+              <span class="thread-username">lop12a3</span>
+              <span class="thread-verified">✓</span>
+            </div>
+            <div class="thread-header-right">
+              <span class="thread-time">29/1/2026</span>
+              <button class="thread-more">···</button>
+            </div>
+          </div>
+          <p class="thread-text">
+            lụm giải nhất nheeee!!
+          </p>
+          <div class="thread-image">
+            <img src="./image/f3dc0399bc4b32156b5a.jpg">
+          </div>
+          <div class="thread-actions">
+            <button class="thread-action-btn" onclick="toggleLike(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+          <div class="thread-stats">
+            <span>10000 lượt thích</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 7 -->
+      <div class="thread-post">
+        <div class="thread-left">
+          <div class="thread-avatar">
+            <img src="https://i.ibb.co/21pSRG8f/logo12a3.png" alt="12A3">
+          </div>
+          <div class="thread-line"></div>
+          <div class="thread-reply-avatars">
+            <div class="mini-avatar"><img src="https://i.ibb.co/21pSRG8f/logo12a3.png" alt=""></div>
+          </div>
+        </div>
+        <div class="thread-content">
+          <div class="thread-header">
+            <div class="thread-user-info">
+              <span class="thread-username">lop12a3</span>
+              <span class="thread-verified">✓</span>
+            </div>
+            <div class="thread-header-right">
+              <span class="thread-time">10/1/2026</span>
+              <button class="thread-more">···</button>
+            </div>
+          </div>
+          <p class="thread-text">
+            tiết cuối cùng của Quốc Phòng
+          </p>
+          <div class="thread-image">
+            <img src="./image/b6957bd2c600485e1111.jpg">
+          </div>
+          <div class="thread-actions">
+            <button class="thread-action-btn" onclick="toggleLike(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+          <div class="thread-stats">
+            <span>450 lượt thích</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 8 -->
+      <div class="thread-post">
+        <div class="thread-left">
+          <div class="thread-avatar">
+            <img src="https://i.ibb.co/21pSRG8f/logo12a3.png" alt="12A3">
+          </div>
+        </div>
+        <div class="thread-content">
+          <div class="thread-header">
+            <div class="thread-user-info">
+              <span class="thread-username">lop12a3</span>
+              <span class="thread-verified">✓</span>
+            </div>
+            <div class="thread-header-right">
+              <span class="thread-time">5/2/2025</span>
+              <button class="thread-more">···</button>
+            </div>
+          </div>
+          <p class="thread-text">
+            đi nướng thịt thử để bán hội chợ nèe
+          </p>
+          <div class="thread-image">
+            <video src="./video/2987066467676107446.mp4" controls></video>
+          </div>
+          <div class="thread-actions">
+            <button class="thread-action-btn" onclick="toggleLike(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            </button>
+            <button class="thread-action-btn">
+              <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+          <div class="thread-stats">
+            <span>50 lượt thích</span>
+          </div>
+        </div>
+      </div>
 
     </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-hearts">💛 🧡 💗 💜 💙</div>
+      <p class="footer-text">Website Code By <span class="highlight">David Bepo</span></p>
+      <p class="footer-subtext">Mãi mãi trong trái tim chúng ta</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/19fvk4Py1A/" target="_blank" rel="noopener" class="social-icon facebook" title="Facebook" aria-label="Facebook">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png" alt="Facebook" width="24" height="24">
+        </a>
+        <a href="https://www.tiktok.com/@12a3anhtring" target="_blank" rel="noopener" class="social-icon tiktok" title="TikTok" aria-label="TikTok">
+          <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" width="24" height="24">
+        </a>
+      </div>
+      <p class="footer-copyright">© 2025 Kỷ Yếu 12A3. All rights reserved.</p>
     </div>
+  </footer>
+
+  <script>
+    function toggleLike(btn) {
+      btn.classList.toggle('liked');
+    }
+  </script>
 </body>
-
 </html>

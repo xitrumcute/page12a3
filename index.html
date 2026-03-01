@@ -11,17 +11,18 @@
   <link rel="icon" type="image/png" href="https://i.ibb.co/21pSRG8f/logo12a3.png">
 </head>
 <body>
+  <!-- Banner -->
+  <div class="top-banner">
+    <img src="./image/banner.png" alt="Banner Lớp 12A3">
+  </div>
+
   <!-- Navigation -->
   <nav>
-    <div class="logo">
-      <div class="logo-icon">🎓</div>
-      Khóa 2025 - 2026
-    </div>
     <ul class="nav-links">
-      <li><a href="#members">Thành viên</a></li>
-      <li><a href="#albums">Ảnh & Kỷ niệm</a></li>
-      <li><a href="#timeline">Sự kiện</a></li>
-      <li><a href="#share">Chia sẻ</a></li>
+      <li><a href="./index.html">Trang chủ</a></li>
+      <li><a href="./about.html">Giới thiệu</a></li>
+      <li><a href="./member.html">Thành viên</a></li>
+      <li><a href="./memories.html">Kỷ niệm</a></li>
     </ul>
   </nav>
 
@@ -34,86 +35,34 @@
       <div class="float-item"></div>
     </div>
     <div class="hero-content">
-      <h1>Bạn bè <span>Mãi Mãi,</span><br>Kỷ Niệm Bất Tận</h1>
-      <p>Tái hiện tiếng cười, những bài học và tình yêu chúng ta đã chia sẻ. Một cuốn album kỹ thuật số ăn mừng cuộc hành trình chung của chúng ta qua những năm tháng đẹp nhất.</p>
-      <div class="hero-buttons">
-        <a href="#albums" class="clay-button">Khám phá Kỷ niệm</a>
-        <a href="#share" class="clay-button secondary">Chia sẻ Câu chuyện</a>
+      <h1>Đếm Ngược Tới<br><span>Kỳ Thi Tốt Nghiệp</span></h1>
+      <p>Chỉ còn đếm ngược đến ngày 11/06/2026. Cùng nhau cố gắng, nỗ lực hết mình cho một mùa thi thành công rực rỡ và những kỷ niệm không thể nào quên!</p>
+      
+      <div class="countdown-container">
+        <div class="clay-card time-box">
+          <span id="days">00</span>
+          <p>Ngày</p>
+        </div>
+        <div class="clay-card time-box">
+          <span id="hours">00</span>
+          <p>Giờ</p>
+        </div>
+        <div class="clay-card time-box">
+          <span id="minutes">00</span>
+          <p>Phút</p>
+        </div>
+        <div class="clay-card time-box">
+          <span id="seconds">00</span>
+          <p>Giây</p>
+        </div>
       </div>
     </div>
   </section>
-
-  <!-- Members Section -->
-  <section id="members">
-    <div class="section-header">
-      <span class="section-badge">👥 Thành viên Lớp</span>
-      <h2>Các Thành Viên Của Lớp</h2>
-    </div>
-    
-    <!-- Team Cards -->
-    <div class="teams-grid">
-      <a href="./to1.html" class="team-card clay-card">
-        <div class="team-icon">👥</div>
-        <h3>Tổ 1</h3>
-        <p class="team-count" id="count-1">11 thành viên</p>
-        <span class="view-btn">Xem chi tiết →</span>
-      </a>
-      <a href="./to2.html" class="team-card clay-card">
-        <div class="team-icon">👥</div>
-        <h3>Tổ 2</h3>
-        <p class="team-count" id="count-2">5 thành viên</p>
-        <span class="view-btn">Xem chi tiết →</span>
-      </a>
-      <a href="./to3.html" class="team-card clay-card">
-        <div class="team-icon">👥</div>
-        <h3>Tổ 3</h3>
-        <p class="team-count" id="count-3">9 thành viên</p>
-        <span class="view-btn">Xem chi tiết →</span>
-      </a>
-      <a href="./to4.html" class="team-card clay-card">
-        <div class="team-icon">👥</div>
-        <h3>Tổ 4</h3>
-        <p class="team-count" id="count-4">10 thành viên</p>
-        <span class="view-btn">Xem chi tiết →</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- Photo Albums Section -->
-  <section id="albums">
-    <div class="section-header">
-      <span class="section-badge">📸 Album Ảnh</span>
-      <h2>Những Khoảnh Khắc Được Ghi Lại</h2>
-      <p>Duyệt qua bộ sưu tập các bức ảnh quý báu</p>
-    </div>
-    <div class="photo-album-grid">
-      <div class="clay-card album-card">
-        <img src="https://i.ibb.co/39JY2BpR/ce4b5ad972e7ffb9a6f618.jpg" alt="Kỷ niệm lớp học" >
-        <h3>Những Ngày Đầu Tiên Của Lớp</h3>
-        <p>Nơi tất cả bắt đầu - những khuôn mặt non nớt và tình bạn mới</p>
-      </div>
-
-      <div class="clay-card album-card">
-        <img src="https://i.ibb.co/HD86PDHj/08ea7c964ba8c6f69fb914.jpg" alt="Kỷ niệm 20/11">
-        <h3>Ngày Nhà Giáo Việt Nam</h3>
-        <p>Một ngày thật ý nghĩa khi lớp cùng nhau tri ân thầy cô – những người đã chắp cánh cho ước mơ của chúng em. Những bó hoa, lời chúc và tiếng cười hồn nhiên đã tạo nên bức tranh ấm áp của tình thầy trò.</p>
-      </div>
-
-      <div class="clay-card album-card">
-        <img src="https://i.ibb.co/gZQ3sCmM/ddbeccf1fbcf76912fde8.jpg" alt="Kỷ niệm 20/11/2024">
-        <h3>Ngày 20/11/2024</h3>
-        <p>Ngày lễ tri ân tràn ngập tiếng cười và cảm xúc. Mỗi lời chúc, mỗi tấm thiệp đều chứa đựng sự biết ơn chân thành gửi đến những người lái đò tận tụy.</p>
-      </div>
-    </div>
-
-    <div class="album-action">
-      <a href="./memories.html" class="view-all-btn">Xem Tất Cả Kỷ Niệm →</a>
-    </div>
 
   <!-- Timeline Section -->
   <section id="timeline">
     <div class="section-header">
-      <span class="section-badge">📅 Cuộc Hành Trình Của Lớp</span>
+      <span class="section-badge">📅 Cuộc Hành Trình Của Chúng Tôi</span>
       <h2>Dòng Thời Gian Lớp</h2>
       <p>Một năm đầy sự phát triển, tình bạn và những khoảnh khắc không thể quên</p>
     </div>
@@ -164,7 +113,7 @@
 <footer>
   <div class="footer-content">
     <div class="footer-hearts">💛 🧡 💗 💜 💙</div>
-    <p class="footer-text">Tạo bởi <span class="highlight">Lớp 12A3</span></p>
+    <p class="footer-text">Website Code By <span class="highlight">David Bepo</span></p>
     <p class="footer-subtext">Mãi mãi trong trái tim chúng ta</p>
     
     <div class="social-links">
@@ -179,5 +128,29 @@
     <p class="footer-copyright">© 2025 Kỷ Yếu 12A3. All rights reserved.</p>
   </div>
 </footer>
+  <!-- Script cho Đếm Ngược -->
+  <script>
+    const countDownDate = new Date("June 11, 2026 00:00:00").getTime();
+    
+    const countdownFunction = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+      document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+      document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+      document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+      if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.querySelector(".countdown-container").innerHTML = "<h2 style='color: var(--coral)'>Chúc Các Bạn Thi Tốt!</h2>";
+      }
+    }, 1000);
+  </script>
 </body>
 </html>

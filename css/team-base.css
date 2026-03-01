@@ -26,50 +26,13 @@ body {
     overflow-x: hidden;
 }
 
-nav {
-    background: linear-gradient(90deg, rgba(255, 107, 107, 0.95) 0%, rgba(255, 229, 180, 0.95) 100%);
-    backdrop-filter: blur(10px);
-    padding: 1.5rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 20px rgba(139, 115, 85, 0.1);
-    position: relative;
-    z-index: 100;
-}
+/* Nav styles now inherited from style.css */
 
-.nav-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.nav-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: white;
-    color: var(--coral);
-    padding: 10px 20px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
-}
-
-.nav-back:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
-}
 
 .team-header {
     text-align: center;
     padding: 60px 20px 40px;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .team-header h1 {
@@ -85,7 +48,7 @@ nav {
 
 .team-members {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 25px;
     padding: 40px;
     max-width: 1400px;
@@ -99,7 +62,7 @@ nav {
     cursor: pointer;
     background: linear-gradient(145deg, #ffffff, #f0e6d8);
     border-radius: 30px;
-    box-shadow: 
+    box-shadow:
         12px 12px 24px rgba(139, 115, 85, 0.15),
         -8px -8px 20px rgba(255, 255, 255, 0.9),
         inset 2px 2px 4px rgba(255, 255, 255, 0.8),
@@ -110,7 +73,7 @@ nav {
 
 .member-card-item:hover {
     transform: translateY(-10px) scale(1.02);
-    box-shadow: 
+    box-shadow:
         16px 16px 32px rgba(139, 115, 85, 0.2),
         -10px -10px 24px rgba(255, 255, 255, 1),
         inset 2px 2px 4px rgba(255, 255, 255, 0.9),
@@ -197,7 +160,7 @@ nav {
 
 .member-info-wrapper .view-detail-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 
+    box-shadow:
         8px 8px 16px rgba(139, 115, 85, 0.15),
         -4px -4px 12px rgba(255, 255, 255, 0.9);
 }
@@ -259,6 +222,7 @@ nav {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
